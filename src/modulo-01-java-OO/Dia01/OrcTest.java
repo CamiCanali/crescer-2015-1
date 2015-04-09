@@ -454,7 +454,63 @@ public class OrcTest
         // Assert
         assertEquals(beyBlade, resultado);
     }
+    
+    @Test
+    public void ordenarItensComNenhumItem() {
+        // Arrange
+        Orc urukhai = new Orc();
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
+    
+     @Test
+    public void ordenarItensComUmItem() {
+        // Arrange
+        Orc urukhai = new Orc();
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        inventarioEsperado.add(adaga);
+        urukhai.adicionarItem(adaga);
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
+    
+    @Test
+    public void ordenarItensComVariosItens() {
+        // Arrange
+        Orc urukhai = new Orc();
+
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ItemDoInventario pocao = new ItemDoInventario(2, "Poções");
+        ItemDoInventario flecha = new ItemDoInventario(17, "Flechas");
+        ItemDoInventario pedraPreciosa = new ItemDoInventario(9, "Pedras preciosas");
+        ItemDoInventario beyBlade = new ItemDoInventario(18, "BeyBlade");
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        inventarioEsperado.add(pocao);
+        inventarioEsperado.add(pedraPreciosa);
+        inventarioEsperado.add(adaga);
+        inventarioEsperado.add(flecha);
+        inventarioEsperado.add(beyBlade);
+        urukhai.adicionarItem(pocao);
+        urukhai.adicionarItem(pedraPreciosa);
+        urukhai.adicionarItem(adaga);
+        urukhai.adicionarItem(flecha);
+        urukhai.adicionarItem(beyBlade);
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
 }
+
 
 
 
