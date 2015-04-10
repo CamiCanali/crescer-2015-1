@@ -253,16 +253,16 @@ public class Orc
         boolean haItens = !this.itens.isEmpty();       
         ItemDoInventario atual;
         
-        for(int i = 0; i < itens.size()-  1; i++){
-            int x = i;
+        for(int i = 0; i < itens.size() - 1; i++){
+            
             if (haItens) {
               menor = this.itens.get(i);
-              for (int j = x + 1; j < this.itens.size(); j++) {
+              for (int j = i + 1; j < this.itens.size(); j++) {
                 atual = this.itens.get(j);
 
                 if (atual.getQuantidade() < menor.getQuantidade()) {
                     itens.set(j, menor);
-                    itens.set(x, atual);
+                    itens.set(i, atual);
                     menor = atual;
                 }
               }
