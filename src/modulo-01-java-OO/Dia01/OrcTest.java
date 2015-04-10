@@ -169,7 +169,7 @@ public class OrcTest
     public void orcNasceComNomeInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = "Urukhai";	
+        String esperado = "Urukhai";    
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -182,7 +182,7 @@ public class OrcTest
     public void orcNasceComNomeVazioInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = "";	
+        String esperado = "";   
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -195,7 +195,7 @@ public class OrcTest
     public void orcNasceComNomeNuloInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = null;	
+        String esperado = null; 
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -397,7 +397,120 @@ public class OrcTest
         assertEquals(3, pocao.getQuantidade());
         assertEquals(1, lanca.getQuantidade());
     }
+    
+    @Test
+    public void getMaiorQuantidadeComNenhumItem() {
+        // Arrange
+        Orc orc = new Orc();
+        ItemDoInventario esperado = null;
+        // Act
+        ItemDoInventario resultado = orc.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(esperado, resultado);
+    }
+    
+    @Test
+    public void getMaiorQuantidadeComUmItem() {
+        // Arrange
+        Orc orc = new Orc();
+        ItemDoInventario esperado = new ItemDoInventario(1, "Light Saber");
+        orc.adicionarItem(esperado);
+        // Act
+        ItemDoInventario resultado = orc.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(esperado, resultado);
+    }
+    
+    @Test
+    public void getMaiorQuantidadeComDoisOuMaisItensComAMesmaQuantidade() {
+        // Arrange
+        Orc orc = new Orc();
+        ItemDoInventario esperado = new ItemDoInventario(0, "Gatorade da Vovó");
+        ItemDoInventario duplicado = new ItemDoInventario(0, "Gatorade da Vovó");
+        orc.adicionarItem(esperado);
+        orc.adicionarItem(duplicado);
+        // Act
+        ItemDoInventario resultado = orc.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(esperado, resultado);
+    }
+    
+    @Test
+    public void getMaiorQuantidadeComVariosItensComDiferentesQuantidades() {
+        // Arrange
+        Orc orc = new Orc();
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ItemDoInventario pocao = new ItemDoInventario(2, "Poções");
+        ItemDoInventario flecha = new ItemDoInventario(17, "Poções");
+        ItemDoInventario pedraPreciosa = new ItemDoInventario(9, "Pedras preciosas");
+        ItemDoInventario beyBlade = new ItemDoInventario(18, "BeyBlade");
+        orc.adicionarItem(adaga);
+        orc.adicionarItem(pocao);
+        orc.adicionarItem(flecha);
+        orc.adicionarItem(pedraPreciosa);
+        orc.adicionarItem(beyBlade);
+        // Act
+        ItemDoInventario resultado = orc.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(beyBlade, resultado);
+    }
+    
+    @Test
+    public void ordenarItensComNenhumItem() {
+        // Arrange
+        Orc urukhai = new Orc();
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
+    
+     @Test
+    public void ordenarItensComUmItem() {
+        // Arrange
+        Orc urukhai = new Orc();
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        inventarioEsperado.add(adaga);
+        urukhai.adicionarItem(adaga);
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
+    
+    @Test
+    public void ordenarItensComVariosItens() {
+        // Arrange
+        Orc urukhai = new Orc();
+
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ItemDoInventario pocao = new ItemDoInventario(2, "Poções");
+        ItemDoInventario flecha = new ItemDoInventario(17, "Flechas");
+        ItemDoInventario pedraPreciosa = new ItemDoInventario(9, "Pedras preciosas");
+        ItemDoInventario beyBlade = new ItemDoInventario(18, "BeyBlade");
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        inventarioEsperado.add(pocao);
+        inventarioEsperado.add(pedraPreciosa);
+        inventarioEsperado.add(adaga);
+        inventarioEsperado.add(flecha);
+        inventarioEsperado.add(beyBlade);
+        urukhai.adicionarItem(pocao);
+        urukhai.adicionarItem(pedraPreciosa);
+        urukhai.adicionarItem(adaga);
+        urukhai.adicionarItem(flecha);
+        urukhai.adicionarItem(beyBlade);
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+    }
 }
+
 
 
 
