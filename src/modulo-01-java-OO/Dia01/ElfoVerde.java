@@ -9,8 +9,8 @@ public class ElfoVerde extends Elfo
 {   
     private ItemDoInventario espadaDeAcoValiriano, arcoEFlechaDeVidro;
     
-    public ElfoVerde(String nome){
-        super(nome, 0);
+    public ElfoVerde(String nome, int flechas){
+        super("");
     }
     
     public void atirarFlecha(Orc umOrc) {
@@ -20,9 +20,9 @@ public class ElfoVerde extends Elfo
         umOrc.recebeAtaque();
     }
     
-    protected void adicionarItem(ItemDoInventario item) {
-        if(item == espadaDeAcoValiriano || item == arcoEFlechaDeVidro){
-            adicionarItem(item);
+    public void adicionarItem(ItemDoInventario item) {
+        if(item.getDescricao().equals("Espada de Aço Valiriano") || item.getDescricao().equals("Arco e Flecha de Vidro")){
+            itens.add(item);
         }
     }
 }
