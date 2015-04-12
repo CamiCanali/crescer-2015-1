@@ -105,6 +105,7 @@ public class Orc
         this.itens.remove(item);
     }
     
+    
     /**
      * Imprime a vida atual do Orc.
      * 

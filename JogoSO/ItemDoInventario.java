@@ -32,7 +32,4 @@ public class ItemDoInventario
         this.quantidade = novaQuantidade;
     }
     
-    public ItemDoInventario getItemComMaiorQuantidade(){
-        ArrayList<ItemDoInventario> i = orc.getItens();
-    }
 }    

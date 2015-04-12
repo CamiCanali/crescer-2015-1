@@ -1,12 +1,20 @@
 #BlueJ class context
 comment0.params=umNome\ flechas
 comment0.target=Elfo(java.lang.String,\ int)
-comment0.text=\n\ Cria\ objetos\ Elfo\n\ \n\ @param\ umNome\ Nome\ que\ o\ elfo\ receber\u00E1\n\ @param\ flechas\ Quantidade\ inicial\ de\ flechas\n
+comment0.text=\r\n\ Cria\ objetos\ Elfo\r\n\ \r\n\ @param\ umNome\ Nome\ que\ o\ elfo\ receber\u00E1\r\n\ @param\ flechas\ Quantidade\ inicial\ de\ flechas\r\n
 comment1.params=nome
 comment1.target=Elfo(java.lang.String)
-comment2.params=
-comment2.target=void\ atirarFlecha()
-comment2.text=\n\ Atira\ uma\ flecha\ e\ perde\ uma\ unidade.\n
-comment3.params=novoNome
-comment3.target=void\ setNome(java.lang.String)
-numComments=4
+comment1.text=\r\n\ Cria\ um\ elfo\ informando\ nome.\r\n\ \r\n\ @param\ nome\ Nome\ a\ ser\ dado\ para\ o\ Elfo.\r\n
+comment2.params=umOrc
+comment2.target=void\ atirarFlecha(Orc)
+comment2.text=\r\n\ Atira\ uma\ flecha\ e\ perde\ uma\ unidade.\r\n\ \r\n\ @param\ umOrc\ Orc\ que\ receber\u00E1\ uma\ flechada.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getNome()
+comment4.params=
+comment4.target=int\ getFlechas()
+comment5.params=
+comment5.target=int\ getExperiencia()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ Retorna\ o\ nome\ do\ elfo,\ sua\ quantidade\ de\ flechas\ e\ seus\ n\u00EDveis\ de\ experi\u00EAncia.\r\n\ \r\n\ @return\ Informa\u00E7\u00F5es\ gerais\ sobre\ o\ elfo,\ ex\:\r\n\ \r\n\ "Legolas\ possui\ 42\ flechas\ e\ 0\ n\u00EDveis\ de\ experi\u00EAncia."\r\n
+numComments=7

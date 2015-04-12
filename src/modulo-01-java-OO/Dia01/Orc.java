@@ -12,6 +12,7 @@ public class Orc
     private Status status = Status.VIVO;
     private ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
     private final int NUMERO_SORTE = 3481;
+    
 
     {
         //vida = 110;
@@ -222,6 +223,57 @@ public class Orc
         }
         
     }
+    
+    public ItemDoInventario getItemComMaiorQuantidade() {
+        ItemDoInventario itemMaiorQuantidade = null;
+        
+        boolean temItens = !this.itens.isEmpty();       
+        if (temItens) {
+            itemMaiorQuantidade = this.itens.get(0);
+            
+            for (int i = 1; i < this.itens.size(); i++) {
+                ItemDoInventario itemAtual = this.itens.get(i);
+                boolean encontreiAMaiorQuantidade =
+                    itemAtual.getQuantidade() > itemMaiorQuantidade.getQuantidade();
+                
+                if (encontreiAMaiorQuantidade) {
+                    // atualizar a minha referência para o maior parcial
+                    itemMaiorQuantidade = itemAtual;
+                }
+            }
+        }
+        
+        return itemMaiorQuantidade;
+    }
+    
+    
+       public void ordenarItens(){
+        ArrayList<ItemDoInventario> ordenada = new ArrayList<ItemDoInventario>(itens.size());
+        ItemDoInventario menor;
+        boolean haItens = !this.itens.isEmpty();       
+        ItemDoInventario atual;
+        
+        for(int i = 0; i < itens.size(); i++){
+            
+            if (haItens) {
+              menor = this.itens.get(0);
+              for (int j = 0; j < this.itens.size()- 1; j++) {
+                atual = this.itens.get(j+1);
+
+                if (atual.getQuantidade() < menor.getQuantidade()) {
+                
+                    menor = atual;
+                }
+                
+              }
+            }
+            ordenada.add(menor);
+            itens.remove(menor);
+        }
+
+        this.itens = ordenada;
+    }
+
     
     private double gerarNumero() {
         
