@@ -147,16 +147,15 @@ public class ElfoTest
         assertEquals(resultadoEsperado, resultadoObtido);
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @Test
+    public void elfoVerdeAtiraUmaFlecha(){
+        ElfoVerde elfo = new ElfoVerde("Batman");
+        Orc orc = new Orc();
+        elfo.atirarFlecha(orc);
+        int esperado = 2;
+        int obtido = elfo.getExperiencia();
+        assertEquals(esperado, obtido);
+    }
 }
 
 

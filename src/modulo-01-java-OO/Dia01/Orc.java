@@ -5,12 +5,9 @@ import java.util.*;
  * 
  * @author CWI Software
  */
-public class Orc
+public class Orc extends Personagem
 {
-    private int experiencia, vida = 110;
-    private String nome;
-    private Status status = Status.VIVO;
-    private ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
+
     private final int NUMERO_SORTE = 3481;
     
 
@@ -24,10 +21,11 @@ public class Orc
     public Orc(String nome)
     {
         //vida = 110;
-        this.nome = nome;
+        super(nome,110);
     }
     
     public Orc() {
+        this("");//chama o construtor de cima
     }
     
     /**
@@ -60,50 +58,12 @@ public class Orc
 
     }
     
-    public String getNome() {
-        return this.nome;
-    }
-    
-    public int getExperiencia() {
-        return this.experiencia;
-    }
-    
-    public int getVida() {
-        return this.vida;
-    }
-    
-    public Status getStatus() {
-        return this.status;
-    }
-    
     public void setStatus(Status novoStatus) {
         this.status = novoStatus;
     }
     
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
-    }
-    
-    public ArrayList<ItemDoInventario> getItens() {
-        return this.itens;
-    }
-    
-    /**
-     * Adiciona um item ao inventário.
-     * 
-     * @param item Item a ser adicionado.
-     */
-    public void adicionarItem(ItemDoInventario item) {
-        this.itens.add(item);
-    }
-
-    /**
-     * Remove o item do inventário do orc.
-     * 
-     * @param item Item a ser perdido do inventário.
-     */
-    public void perderItem(ItemDoInventario item) {
-        this.itens.remove(item);
     }
     
     /**
@@ -115,97 +75,6 @@ public class Orc
      */
     public String toString() {
         return "Vida atual: " + this.vida;
-    }
-    
-    /**
-     * Concatena as descrições dos itens, separados por vírgula.
-     * 
-     * SEM ESPAÇO ENTRE AS VÍRGULAS E SEM PONTO FINAL
-     * 
-     * @return Descrições. Ex:
-     * 
-     * "Adaga,Escudo,Bracelete”
-     */
-    public String getDescricoesItens() {
-        StringBuilder builder = new StringBuilder();
-        
-        /*
-         * Utilizando for tradicional         
-        int numeroDeItens = this.itens.size();
-
-        for (int i = 0; i < numeroDeItens; i++) {
-            ItemDoInventario itemAtual = this.itens.get(i);
-            
-            boolean éÚltimoÍndice = i == numeroDeItens - 1;
-                        
-            builder.append(
-                éÚltimoÍndice ?
-                itemAtual.getDescricao() :
-                itemAtual.getDescricao() + ","
-            );
-        }
-        */
-       
-       // C#
-       //foreach (ItemDoInventario item in this.itens) { }
-       
-       /*
-        * Utilizando FOREACH!!
-       for (ItemDoInventario itemAtual : this.itens) {
-           int i = this.itens.indexOf(itemAtual);
-           int numeroDeItens = this.itens.size();
-           boolean éÚltimoÍndice = i == numeroDeItens - 1;
-           
-           builder.append(
-                éÚltimoÍndice ?
-                itemAtual.getDescricao() :
-                itemAtual.getDescricao() + ","
-            );
-       }
-       */
-      
-      /*
-       * JavaScript
-      for (var i = 0, numeroDeItens = this.itens.size(); i < numeroDeItens; i++) {
-      }
-      */
-      
-     /*
-      * WHILE (ENQUANTO)
-      int i = 0;
-      int numeroDeItens = this.itens.size();    
-
-      while (i < numeroDeItens) {
-          ItemDoInventario itemAtual = this.itens.get(i);
-          boolean éÚltimoÍndice = i == numeroDeItens - 1;
-           
-          builder.append(
-                éÚltimoÍndice ?
-                itemAtual.getDescricao() :
-                itemAtual.getDescricao() + ","
-          );
-          //
-          i++;
-      }
-      */
-     
-     int i = 0;
-     int numeroDeItens = this.itens.size();
-     do {
-         if (numeroDeItens > 0) {
-             ItemDoInventario itemAtual = this.itens.get(i);
-              boolean éÚltimoÍndice = i == numeroDeItens - 1;
-               
-              builder.append(
-                    éÚltimoÍndice ?
-                    itemAtual.getDescricao() :
-                    itemAtual.getDescricao() + ","
-              );
-         }
-         i++;
-     } while(i < numeroDeItens);
-     
-       return builder.toString();
     }
     
     /**
@@ -224,6 +93,7 @@ public class Orc
         
     }
     
+<<<<<<< HEAD
     public ItemDoInventario getItemComMaiorQuantidade() {
         ItemDoInventario itemMaiorQuantidade = null;
         
@@ -275,6 +145,8 @@ public class Orc
     }
 
     
+=======
+>>>>>>> 4fb45c94fc184e12ab376be7ed8fdbe3135c492c
     private double gerarNumero() {
         
         double numeroGerado = 0.0;
@@ -316,4 +188,5 @@ public class Orc
                 
         return numeroGerado;
     }
+    
 }

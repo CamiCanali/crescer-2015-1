@@ -32,10 +32,17 @@ dependency8.type=UsesDependency
 dependency9.from=OrcTest
 dependency9.to=Orc
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 objectbench.height=305
 objectbench.width=1027
 package.editor.height=343
 package.editor.width=1234
+=======
+objectbench.height=317
+objectbench.width=955
+package.editor.height=587
+package.editor.width=1162
+>>>>>>> 4fb45c94fc184e12ab376be7ed8fdbe3135c492c
 package.editor.x=-8
 package.editor.y=-8
 package.numDependencies=11
@@ -80,8 +87,13 @@ target3.typeParameters=
 target3.width=150
 target3.x=300
 target3.y=100
+<<<<<<< HEAD
 target4.editor.height=744
 target4.editor.width=1382
+=======
+target4.editor.height=1000
+target4.editor.width=1296
+>>>>>>> 4fb45c94fc184e12ab376be7ed8fdbe3135c492c
 target4.editor.x=-8
 target4.editor.y=-8
 target4.height=50
@@ -135,8 +147,13 @@ target8.typeParameters=
 target8.width=140
 target8.x=300
 target8.y=350
+<<<<<<< HEAD
 target9.editor.height=744
 target9.editor.width=1382
+=======
+target9.editor.height=1000
+target9.editor.width=1296
+>>>>>>> 4fb45c94fc184e12ab376be7ed8fdbe3135c492c
 target9.editor.x=-8
 target9.editor.y=-8
 target9.height=50

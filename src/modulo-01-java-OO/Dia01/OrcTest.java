@@ -499,10 +499,11 @@ public class OrcTest
         inventarioEsperado.add(flecha);
         inventarioEsperado.add(beyBlade);
         urukhai.adicionarItem(pocao);
-        urukhai.adicionarItem(pedraPreciosa);
         urukhai.adicionarItem(adaga);
-        urukhai.adicionarItem(flecha);
+        urukhai.adicionarItem(pedraPreciosa);
         urukhai.adicionarItem(beyBlade);
+        urukhai.adicionarItem(flecha);
+        
         urukhai.ordenarItens();
         // Act
         ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
