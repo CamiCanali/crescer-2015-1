@@ -38,6 +38,14 @@ public class Personagem
         return this.itens;
     }
     
+    public void setStatus(Status novoStatus) {
+        this.status = novoStatus;
+    }
+    
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+    
     /**
      * Adiciona um item ao inventário.
      * 
@@ -78,11 +86,33 @@ public class Personagem
         return itemMaiorQuantidade;
     }
     
-        /**
-     * Ordena itens do inventario poq quantidade ascendente
-     **/
+    /**
+     * Ordena itens do inventário por quantidade ascendente.
+     * 
+     * Algoritmo atual: Bubblesort
+     */
     protected void ordenarItens(){
-
+        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
+       // iniciamos com true para forçar a entrada no laço.. poderia ter sido feito com do-while também
+        boolean posicoesSendoTrocadas = true;
+         
+        while (posicoesSendoTrocadas) {
+            posicoesSendoTrocadas = false;
+            for (int j = 0; j < this.itens.size() - 1; j++) {
+                ItemDoInventario itemAtual = this.itens.get(j);
+                ItemDoInventario proximo = this.itens.get(j + 1);
+                
+                boolean precisaTrocar = 
+                    itemAtual.getQuantidade() > proximo.getQuantidade();
+                
+                if (precisaTrocar) {
+                    this.itens.set(j, proximo);
+                    this.itens.set(j + 1, itemAtual);
+                    posicoesSendoTrocadas = true;
+                }
+            }
+        }
+        /**
         boolean haItens = !this.itens.isEmpty();       
 
         for(int i = 0; i < itens.size() - 1; i++){
@@ -100,7 +130,7 @@ public class Personagem
               }
             }
             
-        }
+        }**/
     }
     
     

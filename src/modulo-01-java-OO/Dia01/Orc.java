@@ -58,13 +58,7 @@ public class Orc extends Personagem
 
     }
     
-    public void setStatus(Status novoStatus) {
-        this.status = novoStatus;
-    }
     
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
-    }
     
     /**
      * Imprime a vida atual do Orc.

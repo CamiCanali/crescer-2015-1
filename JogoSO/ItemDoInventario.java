@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * Representa um item e sua quantidade em inventário.
  * 
@@ -6,7 +7,7 @@
 public class ItemDoInventario
 {
     private String descricao;
-    private int quantidade;
+    private int quantidade; 
     
     /**
      * Cria um item de inventário com a quantidade e descrição informadas
@@ -30,4 +31,5 @@ public class ItemDoInventario
     public void setQuantidade(int novaQuantidade) {
         this.quantidade = novaQuantidade;
     }
-}
+    
+}    

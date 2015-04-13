@@ -488,11 +488,11 @@ public class OrcTest
         Orc urukhai = new Orc();
 
         ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
-        ItemDoInventario pocao = new ItemDoInventario(2, "Poções");
+        ItemDoInventario pocao = new ItemDoInventario(2,"Pocoes");
         ItemDoInventario flecha = new ItemDoInventario(17, "Flechas");
         ItemDoInventario pedraPreciosa = new ItemDoInventario(9, "Pedras preciosas");
         ItemDoInventario beyBlade = new ItemDoInventario(18, "BeyBlade");
-        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<ItemDoInventario>();
         inventarioEsperado.add(pocao);
         inventarioEsperado.add(pedraPreciosa);
         inventarioEsperado.add(adaga);

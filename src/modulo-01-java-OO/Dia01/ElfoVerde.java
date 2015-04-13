@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class ElfosVerdes here.
  * 
@@ -7,10 +7,14 @@
  */
 public class ElfoVerde extends Elfo
 {   
-    private ItemDoInventario espadaDeAcoValiriano, arcoEFlechaDeVidro;
+    private final ArrayList<String> ITENS_PERMITIDOS = new ArrayList<>();
+    {
+        ITENS_PERMITIDOS.add("Espada de aço Valiriano"); 
+        ITENS_PERMITIDOS.add("Arco e flecha de vidro");
+    }
     
     public ElfoVerde(String nome){
-        super(nome, 0);
+        super("");
     }
     
     public void atirarFlecha(Orc umOrc) {
@@ -20,9 +24,10 @@ public class ElfoVerde extends Elfo
         umOrc.recebeAtaque();
     }
     
-    protected void adicionarItem(ItemDoInventario item) {
-        if(item == espadaDeAcoValiriano || item == arcoEFlechaDeVidro){
-            adicionarItem(item);
+    public void adicionarItem(ItemDoInventario item) {
+        if(item.getDescricao().equalsIgnoreCase("Espada de Aço Valiriano") || 
+        item.getDescricao().equalsIgnoreCase("Arco e Flecha de Vidro")){
+            super.adicionarItem(item);
         }
     }
 }
