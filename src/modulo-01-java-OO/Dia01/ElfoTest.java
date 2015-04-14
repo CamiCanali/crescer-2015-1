@@ -148,6 +148,44 @@ public class ElfoTest
         assertEquals(resultadoEsperado, resultadoObtido);
     }
     
+    public void criarUmElfo(){
+        
+        Elfo elfo = new Elfo("Legolas");
+        //Elfo elfo2 = new Elfo("Jon");
+        int contadorEsperado = 1;
+        int contadorObtido = Elfo.getContadorElfosCriados();
+        assertEquals(contadorEsperado, contadorObtido);
+    }
+    
+    public void criarDoisElfos(){
+
+        Elfo elfo = new Elfo("Legolas");
+        Elfo elfo2 = new Elfo("Jon");
+        int contadorEsperado = 2;
+        int contadorObtido = Elfo.getContadorElfosCriados();
+        assertEquals(contadorEsperado, contadorObtido);
+    }
+    
+    @Before
+    public void setUp(){
+        Elfo.resetarContadorElfosCriados();
+    }
+    
+     @Test
+    public void doisElfosComMesmoNomeSaoIguais(){
+        boolean esperado = true;
+        Elfo legolas = new Elfo("Legolas");
+        Elfo legolas2 = new Elfo("Legolas");
+        assertEquals(esperado, legolas.equals(legolas2));
+    }
+    
+     @Test
+    public void doisElfosComDiferentesNomeSaoIguais(){
+        boolean esperado = false;
+        Elfo legolas = new Elfo("Legolas");
+        Elfo legolas2 = new Elfo("Golias");
+        assertEquals(esperado, legolas.equals(legolas2));
+    }
     
     }
     

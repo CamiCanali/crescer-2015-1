@@ -7,29 +7,20 @@
  */
 public class ElfoNoturno extends Elfo
 {
-    
-   public ElfoNoturno(String nome){
+
+    public ElfoNoturno(String nome){
       super("");
-   }
+    }
   
-   public void atirarFlecha(Orc umOrc) {
+    public void atirarFlecha(Orc umOrc) {
         super.atirarFlecha(umOrc);
         this.experiencia += 2;
-        umOrc.recebeAtaque();
-        
-        vida -= (vida*5)/100;
+        double qtdVidaAPerder = vida*0.05;
+        vida -= qtdVidaAPerder;
         this.status = (int)this.vida ==0 ? Status.MORTO : this.status;
-   }
-  
-   public int calculaFlechas(){
-       int contador = 0;
-       for (int i = 0; i < getFlechas(); i++){
-           contador++;
-           vida -= (vida*5)/100;
-           if(vida == 0){
-               return contador;
-            }
-       }
-       return contador;
+    }
+    
+    public String toString(){
+        return "Elfo Noturno" + super.toString();
     }
 }

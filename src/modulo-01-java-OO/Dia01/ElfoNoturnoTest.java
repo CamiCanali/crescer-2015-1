@@ -34,7 +34,7 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(orc);
         int experienciaEsperada = 6;
         int experienciaObtida = elfo.getExperiencia();
-        int vidaEsperada = 91;
+        int vidaEsperada = 90;
         int vidaObtida = elfo.getVida();
         assertEquals(experienciaEsperada, experienciaObtida);
         assertEquals(vidaEsperada, vidaObtida);
@@ -50,7 +50,7 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(orc2);
         int experienciaEsperada = 9;
         int experienciaObtida = elfo.getExperiencia();
-        int vidaEsperada = 87;
+        int vidaEsperada = 85;
         int vidaObtida = elfo.getVida();
         assertEquals(experienciaEsperada, experienciaObtida);
         assertEquals(vidaEsperada, vidaObtida);

@@ -8,9 +8,12 @@ public class Elfo extends Personagem
 {
     // Versão correção do tema!!
     protected int flechas;
+    protected static int contadorElfosCriados;
     // type initializer
     {
         flechas = 42;
+        vida = 100;
+        Elfo.contadorElfosCriados++;
     }
     
     /**
@@ -45,6 +48,14 @@ public class Elfo extends Personagem
         flechas--;
         experiencia++;
         umOrc.recebeAtaque();
+    }
+    
+    public static int getContadorElfosCriados(){
+        return contadorElfosCriados;
+    } 
+    
+    public static void resetarContadorElfosCriados(){
+        contadorElfosCriados = 0;
     }
     
     public String getNome(){
@@ -121,4 +132,12 @@ public class Elfo extends Personagem
         builder.append(" de experiência.");*/
     }
     
+    @Override
+    public boolean equals(Object outro){
+            //Elfo outroElfo = (Elfo)outro;
+            //boolean saoIguais = this.nome.equals(outroElfo.getNome());
+            return ((Elfo)outro).getNome().equals(this.nome);
+    }
+    
+       
 }
