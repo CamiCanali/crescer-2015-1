@@ -9,6 +9,7 @@ public class Elfo extends Personagem
     // Versão correção do tema!!
     protected int flechas;
     protected static int contadorElfosCriados;
+    private int x;
     // type initializer
     {
         flechas = 42;
@@ -35,7 +36,7 @@ public class Elfo extends Personagem
      * @param nome Nome a ser dado para o Elfo.
      */
     public Elfo(String nome) {
-        super(nome, 100);
+        super(nome, 0);
     }
     
     /**
@@ -48,6 +49,7 @@ public class Elfo extends Personagem
         flechas--;
         experiencia++;
         umOrc.recebeAtaque();
+        status = Status.ATACANDO;
     }
     
     public static int getContadorElfosCriados(){
@@ -55,7 +57,7 @@ public class Elfo extends Personagem
     } 
     
     public static void resetarContadorElfosCriados(){
-        contadorElfosCriados = 0;
+        Elfo.contadorElfosCriados = 0;
     }
     
     public String getNome(){
