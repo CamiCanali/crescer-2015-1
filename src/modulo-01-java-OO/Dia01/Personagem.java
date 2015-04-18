@@ -5,11 +5,11 @@ import java.util.*;
  * @author Camila
  * @version 1
  */
-public class Personagem
+public abstract class Personagem
 {
     protected String nome;
     protected int experiencia;
-    protected int vida;
+    protected double vida;
     protected Status status = Status.VIVO;
     protected ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
     
@@ -30,7 +30,7 @@ public class Personagem
         return this.experiencia;
     }
     
-    protected int getVida() {
+    protected double getVida() {
         return this.vida;
     }
 
@@ -224,5 +224,7 @@ public class Personagem
      
     return builder.toString();
     }
+    
+    abstract void imprimeNome();
     
 }

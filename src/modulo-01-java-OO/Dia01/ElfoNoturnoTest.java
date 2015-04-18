@@ -58,7 +58,7 @@ public class ElfoNoturnoTest
     @Test
     public void quandoAtirarDuasFlechasPerde9ponto75DeVida() {
         ElfoNoturno elfoNoturno = new ElfoNoturno("Night Legolas");
-        double esperado = 90;
+        double esperado = 90.25;
         elfoNoturno.atirarFlecha(new Orc());
         elfoNoturno.atirarFlecha(new Orc());
         double obtido = elfoNoturno.getVida();
@@ -69,7 +69,7 @@ public class ElfoNoturnoTest
     @Test
     public void quandoAtirarTresFlechasPerde14pontos() {
         ElfoNoturno elfoNoturno = new ElfoNoturno("Night Legolas");
-        double esperado = 85;
+        double esperado = 85.7375;
         elfoNoturno.atirarFlecha(new Orc());
         elfoNoturno.atirarFlecha(new Orc());
         elfoNoturno.atirarFlecha(new Orc());

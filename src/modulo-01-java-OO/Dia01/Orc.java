@@ -129,4 +129,8 @@ public class Orc extends Personagem
         return numeroGerado;
     }
     
+    
+    public void imprimeNome(){
+    //???
+    }
 }

@@ -2,7 +2,7 @@ import java.util.*;
 /**
  * Write a description of class ElfosVerdes here.
  * 
- * @author (your name) 
+ * @author Camila
  * @version (a version number or a date)
  */
 public class ElfoVerde extends Elfo
@@ -14,16 +14,14 @@ public class ElfoVerde extends Elfo
     }
     
     public ElfoVerde(String nome){
-        super("");
+        super(nome);
     }
     
     public void atirarFlecha(Orc umOrc) {
-        //flechas = flechas - 1;
-        flechas--;
-        experiencia += 2;
-        umOrc.recebeAtaque();
+        super.atirarFlecha(umOrc);
+        this.experiencia++;
     }
-    
+   
     public void adicionarItem(ItemDoInventario item) {
         if(item.getDescricao().equalsIgnoreCase("Espada de Aço Valiriano") || 
         item.getDescricao().equalsIgnoreCase("Arco e Flecha de Vidro")){

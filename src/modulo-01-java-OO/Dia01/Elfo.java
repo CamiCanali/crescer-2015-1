@@ -141,5 +141,9 @@ public class Elfo extends Personagem
             return ((Elfo)outro).getNome().equals(this.nome);
     }
     
+    public void imprimeNome(){
+    //???
+    }
+    
        
 }

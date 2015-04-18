@@ -29,7 +29,7 @@ public class ExercitoDeElfos
         if(podeAlistar){
             exercito.put(elfo.getNome(), elfo);
         }else{
-            throw new NaoPodeAlistarException();
+           ErrosDoJogo.naoPodeAlistar();
         }
     }
     
@@ -60,7 +60,11 @@ public class ExercitoDeElfos
     }
     
     public void atacarHorda(ArrayList<Orc> orcs){
-        ArrayList <Elfo> elfosQueVaoPraPeleia = buscar(Status.VIVO);
-        estrategia.atacarOrcs(elfosQueVaoPraPeleia, orcs);
+        ArrayList <Elfo> elfosQueVaoPraLuta = buscar(Status.VIVO);
+        estrategia.atacarOrcs(elfosQueVaoPraLuta, orcs);
+    }
+    
+    public void mudaDeEstrategia(EstrategiaDeAtaque novaEstrategia){
+        estrategia= novaEstrategia;
     }
 }

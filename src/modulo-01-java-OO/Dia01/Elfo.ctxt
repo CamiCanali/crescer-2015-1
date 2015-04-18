@@ -21,4 +21,6 @@ comment7.target=java.lang.String\ toString()
 comment7.text=\r\n\ Retorna\ o\ nome\ do\ elfo,\ sua\ quantidade\ de\ flechas\ e\ seus\ n\u00EDveis\ de\ experi\u00EAncia.\r\n\ \r\n\ @return\ Informa\u00E7\u00F5es\ gerais\ sobre\ o\ elfo,\ ex\:\r\n\ \r\n\ "Legolas\ possui\ 42\ flechas\ e\ 0\ n\u00EDveis\ de\ experi\u00EAncia."\r\n
 comment8.params=outro
 comment8.target=boolean\ equals(java.lang.Object)
-numComments=9
+comment9.params=
+comment9.target=void\ imprimeNome()
+numComments=10
