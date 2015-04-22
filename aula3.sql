@@ -66,17 +66,18 @@ from empregado;
 
 --exercícios parte 2
 --1
- select SUBSTRING(nome, 1, CHARINDEX(' ', nome) -1) as primeiroNome
+ select SUBSTRING(nome, 0, CHARINDEX(' ', nome)) as primeiroNome
  from Associado;
  --2
- select nome, DATEDIFF(YEAR, dataNascimento, GETDATE()) idade
+ select nome, DATEDIFF(YEAR, dataNascimento, GETDATE()) as idade
  from associado;
 --3
  select nomeEmpregado,
-		DATEDIFF(MONTH, dataAdmissao, '31/12/2000') as mesesTrabalhados,
+		DATEDIFF(MONTH, dataAdmissao, CONVERT(DATETIME, '31/12/2000', 103)) as mesesTrabalhados,
 		dataAdmissao
  from Empregado
- where dataAdmissao between '01/05/1980' and '20/01/1982';
+ where dataAdmissao between CONVERT(DATETIME, '01/05/1980', 103)
+					 and  CONVERT(DATETIME, '20/01/1982', 103);
  --4
  select top 1 cargo as MaiorCargo
  from Empregado;
@@ -86,4 +87,19 @@ from empregado;
  order by len(nome) desc;
 --6
 select nome,
-		DATEDIFF(WEEKDAY, dataNascimento, '')
+		DATEADD(year, 50, DataNascimento) AS Cinquenta_anos_em,
+		DATE(DATEADD(YEAR, 50, dataNascimento))as Dia_da_semana
+from Associado
+--7
+select COUNT(Nome),
+		uf
+FROM Cidade
+group by UF;
+--8
+Select nome, UF
+from Cidade
+group by nome, UF
+having count(nome) >1 and count(uf) > 1;
+--9
+select max(idassociado)+1
+from Associado;
