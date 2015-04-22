@@ -103,3 +103,41 @@ having count(nome) >1 and count(uf) > 1;
 --9
 select max(idassociado)+1
 from Associado;
+
+--10
+
+truncate table CopiaCidade
+
+insert into CopiaCidade
+		(IDCidade, Nome, UF)
+SELECT MIN(IDCIDADE) Menor_idcidade,
+		Nome,
+		Uf
+FROM Cidade
+GROUP BY Nome, UF;
+
+select * from CopiaCidade
+
+update Associado
+set IDCidade = NULL
+DELETE Cidade
+
+--11
+begin transaction
+go
+update Cidade
+set Nome = '* ' + Nome
+where nome in (Select nome
+			from Cidade
+			group by nome
+			having count(1) >1);
+--teste			
+			rollback
+select * from cidade;
+--12
+select nome, sexo
+from Associado;
+
+--13
+select nomeEmpregado, salario,
+		
