@@ -133,11 +133,50 @@ where nome in (Select nome
 			having count(1) >1);
 --teste			
 			rollback
-select * from cidade;
+select * from cidade order by Nome;
+COMMIT
+
 --12
-select nome, sexo
+select nome, 
+		CASE sexo
+		when 'm' then 'Masculino'
+		when 'f' then 'Feminino'
+		else 'outro'
+		End Genero
 from Associado;
 
 --13
-select nomeEmpregado, salario,
-		
+select nomeEmpregado, 
+	   salario,
+	   Case when Salario between 1164.01 and 2326 then (Salario*0.15)
+			when Salario > 2326 then (Salario*0.275)
+			else 0
+	   End Desconto_IR
+From Empregado
+
+---14
+Begin Transaction
+go
+delete from cidade
+where idcidade in (select MAX(IDCidade)
+					from Cidade
+					group by Nome, UF
+					having count (1)>1)
+
+select MAX(IDCidade) maior_IDCidade_Duplicada
+from Cidade
+Group by nome, uf
+having count (1)>1;
+
+select nome, uf
+from cidade
+group by nome, uf
+having count (1)>1
+rollback
+commit
+select * from Cidade order by Nome
+
+--15
+alter table cidade
+	add constraint UK_Cidade_nomeUF
+	unique(nome, uf);
