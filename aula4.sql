@@ -11,6 +11,7 @@ select a.nome as NomeAssociado,
 	from Associado A
 	left JOIN Cidade c
 	on a.IDCidade= c.IDCidade;
+<<<<<<< HEAD
 
 --remover o '*' dos nomes
 begin transaction
@@ -43,6 +44,33 @@ select a.nome as nomeAssociado,
 	   left join Cidade c
 	   on c.IDCidade = a.IDCidade
 
+=======
+	
+---3
+select	count(c.nome) as NomeCidade,
+		c.uf as UF
+		from Cidade c
+		left join Associado a
+		on a.IDCidade = c.IDCidade
+		
+		where exists (select null)
+		group by c.UF
+		
+--4
+begin transaction
+go
+select a.nome, 
+	   c.nome as NomeCidade
+	   from Associado a
+	   left join Cidade c
+	   on c.IDCidade = a.IDCidade
+	   update Cidade
+	   set Nome = '*** ' + Nome
+	   where UF in ('sc', 'pr', 'rs')
+rollback
+select * from Cidade order by nome
+select * from Associado
+>>>>>>> 713a7bf864ee7d6831277792a92b64ab87cdca4d
 ---5
 select e.nomeEmpregado as NomeEmpregado, 
 		d.nomeDepartamento as NomeDepartamento,

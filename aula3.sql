@@ -107,8 +107,12 @@ from Associado;
 --10
 
 truncate table CopiaCidade
+<<<<<<< HEAD
 begin transaction
 go
+=======
+
+>>>>>>> 713a7bf864ee7d6831277792a92b64ab87cdca4d
 insert into CopiaCidade
 		(IDCidade, Nome, UF)
 SELECT MIN(IDCIDADE) Menor_idcidade,
@@ -118,7 +122,11 @@ FROM Cidade
 GROUP BY Nome, UF;
 
 select * from CopiaCidade
+<<<<<<< HEAD
 commit
+=======
+
+>>>>>>> 713a7bf864ee7d6831277792a92b64ab87cdca4d
 update Associado
 set IDCidade = NULL
 DELETE Cidade
@@ -163,7 +171,10 @@ where idcidade in (select MAX(IDCidade)
 					from Cidade
 					group by Nome, UF
 					having count (1)>1)
+<<<<<<< HEAD
 commit
+=======
+>>>>>>> 713a7bf864ee7d6831277792a92b64ab87cdca4d
 
 select MAX(IDCidade) maior_IDCidade_Duplicada
 from Cidade

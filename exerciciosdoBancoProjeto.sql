@@ -3,8 +3,54 @@ select count(distinct situacao)
 from Produto
 
 --2
-select substring('LTDA', Nome, RazaoSocial) AS LTDANome
+select idcliente, nome, razaoSocial
 from Cliente
+where nome like '%LTDA%'
+		or razaoSocial like '%LTDA%'
 
+---UPPER MAIÚSCULO E LOWER MINÚSCULO
 
-SELECT * FROM Cliente
+--3
+INSERT into Produto(Nome, PrecoCusto, PrecoVenda, Situacao)
+values ('Galocha Maragato', 35.67, 77.95, 'a')
+select * from Produto
+order by nome
+
+--4
+select idproduto, nome
+from produto
+where not exists (select 1
+					from PedidoItem
+					where PedidoItem.IDProduto = Produto.IDProduto)
+
+create index IX_PedidoItem_Produto on PedidoItem(IDProduto)
+--OUTRA OPÇÃO
+
+select p.idproduto, p.nome
+from Produto p
+	left join PedidoItem item on item.idproduto = p.IDProduto
+where item.idpedido is null
+
+---5
+create view vwEstados as
+select cid.uf, count(1) as totalClientes
+from Cidade cid
+inner join cliente c on c.IDCidade = cid.idcidade
+group by cid.uf
+
+select * from vwEstados
+where totalClientes = (select min (totalClientes) from vwEstados)
+or totalClientes = (select max(totalClientes) from vwEstados)
+
+--6
+select count(distinct nome) totalCidades
+from Cidade
+where exists (select 1
+				from Cliente cli
+				inner join pedido p on p.idcliente = cli.idcliente
+				where cli.idcidade = cidade.IDCidade)
+
+select COUNT(distinct cid.nome) as totalCidades
+from Cidade cid
+inner join Cliente cli on cli.idcidade = cid.IDCidade
+inner join pedido p on p.idcliente = cli.idcliente
