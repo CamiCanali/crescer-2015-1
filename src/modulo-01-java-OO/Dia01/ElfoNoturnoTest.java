@@ -1,12 +1,14 @@
+
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Suíte de testes para ElfoNoturno.
+/*
+ * The test class ElfoNoturnoTest.
  *
- * @author  CWI Software
+ * @author  Camila
+ * @version (a version number or a date)
  */
 public class ElfoNoturnoTest
 {
@@ -97,4 +99,5 @@ public class ElfoNoturnoTest
 
         assertEquals(statusEsperado, obtido); 
     }   
+
 }

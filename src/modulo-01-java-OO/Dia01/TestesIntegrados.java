@@ -3,15 +3,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Testes integrados entre objetos Elfo e Orc.
- *
- * @author  CWI Software
- */
 public class TestesIntegrados
 {
+
     private final double DELTA = 0.005;
-    
+
     @Test
     public void umElfoAtiraEmDoisOrcs() {
         // Arrange
@@ -24,7 +20,9 @@ public class TestesIntegrados
         // Assert
         int experienciaEsperada = 2;
         int flechasEsperadas = 40;
+
         double vidaEsperadaOrc = 100.0;
+
         String toStringEsperadoOrc = "Vida atual: 100.0";
         
         assertEquals(experienciaEsperada, elfo.getExperiencia());
@@ -34,16 +32,5 @@ public class TestesIntegrados
         assertEquals(toStringEsperadoOrc, orc1.toString());
         assertEquals(toStringEsperadoOrc, orc2.toString());
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

@@ -1,47 +1,54 @@
 import java.util.*;
 
 /**
- * Classe base para todos Personagem objetos do jogo.
+ * Pai de todos os Personagem objetos do jogo
  * 
- * @author CWI Software
+ * @author Camila
+ * @version 1
  */
-// C#:
-// public sealed class Personagem
-// Java:
-// public final class Personagem
 public abstract class Personagem
 {
-    protected Status status = Status.VIVO;
-    protected double vida;
     protected String nome;
     protected int experiencia;
+    protected double vida;
+    protected Status status = Status.VIVO;
     protected ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
     
-    protected Personagem(String nome, int vida) {
+    protected Personagem(String nome,int vida){
         this.nome = nome;
         this.vida = vida;
     }
-    
+      
     protected Status getStatus() {
-        return status;
-    }
-    
-    protected double getVida() {
-        return vida;
-    }
+        return this.status;
+    }    
     
     protected String getNome() {
-        return nome;
+        return this.nome;
     }
     
     protected int getExperiencia() {
-        return experiencia;
+        return this.experiencia;
     }
     
+    protected double getVida() {
+        return this.vida;
+    }
+
+
     protected ArrayList<ItemDoInventario> getItens() {
         return this.itens;
     }
     
+
+    public void setStatus(Status novoStatus) {
+        this.status = novoStatus;
+    }
+    
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
     /**
      * Adiciona um item ao inventário.
      * 
@@ -60,6 +67,78 @@ public abstract class Personagem
         this.itens.remove(item);
     }
     
+
+    protected ItemDoInventario getItemComMaiorQuantidade() {
+        ItemDoInventario itemMaiorQuantidade = null;
+        
+        boolean temItens = !this.itens.isEmpty();       
+        if (temItens) {
+            itemMaiorQuantidade = this.itens.get(0);
+            
+            for (int i = 1; i < this.itens.size(); i++) {
+                ItemDoInventario itemAtual = this.itens.get(i);
+                boolean encontreiAMaiorQuantidade =
+                    itemAtual.getQuantidade() > itemMaiorQuantidade.getQuantidade();
+                
+                if (encontreiAMaiorQuantidade) {
+                    // atualizar a minha referência para o maior parcial
+                    itemMaiorQuantidade = itemAtual;
+                }
+            }
+        }
+        
+        return itemMaiorQuantidade;
+    }
+    
+    /**
+     * Ordena itens do inventário por quantidade ascendente.
+     * 
+     * Algoritmo atual: Bubblesort
+     */
+    protected void ordenarItens(){
+        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
+       // iniciamos com true para forçar a entrada no laço.. poderia ter sido feito com do-while também
+        boolean posicoesSendoTrocadas = true;
+         
+        while (posicoesSendoTrocadas) {
+            posicoesSendoTrocadas = false;
+            for (int j = 0; j < this.itens.size() - 1; j++) {
+                ItemDoInventario itemAtual = this.itens.get(j);
+                ItemDoInventario proximo = this.itens.get(j + 1);
+                
+                boolean precisaTrocar = 
+                    itemAtual.getQuantidade() > proximo.getQuantidade();
+                
+                if (precisaTrocar) {
+                    this.itens.set(j, proximo);
+                    this.itens.set(j + 1, itemAtual);
+                    posicoesSendoTrocadas = true;
+                }
+            }
+        }
+        /**
+        boolean haItens = !this.itens.isEmpty();       
+
+        for(int i = 0; i < itens.size() - 1; i++){
+            
+            if (haItens) {
+              ItemDoInventario menor = this.itens.get(i);
+              for (int j = i + 1; j < this.itens.size(); j++) {
+                ItemDoInventario atual = this.itens.get(j);
+
+                if (atual.getQuantidade() < menor.getQuantidade()) {
+                    itens.set(j, menor);
+                    itens.set(i, atual);
+                    menor = atual;
+                }
+              }
+            }
+            
+        }**/
+    }
+    
+    
+
     /**
      * Concatena as descrições dos itens, separados por vírgula.
      * 
@@ -75,7 +154,8 @@ public abstract class Personagem
         /*
          * Utilizando for tradicional         
         int numeroDeItens = this.itens.size();
-        
+
+
         for (int i = 0; i < numeroDeItens; i++) {
             ItemDoInventario itemAtual = this.itens.get(i);
             
@@ -88,6 +168,7 @@ public abstract class Personagem
             );
         }
         */
+
         
         // C#
         //foreach (ItemDoInventario item in this.itens) { }
@@ -95,6 +176,14 @@ public abstract class Personagem
         /*
         * Utilizando FOREACH!!
         for (ItemDoInventario itemAtual : this.itens) {
+
+       
+       // C#
+       //foreach (ItemDoInventario item in this.itens) { }
+       
+       /*
+        * Utilizando FOREACH!!
+       for (ItemDoInventario itemAtual : this.itens) {
            int i = this.itens.indexOf(itemAtual);
            int numeroDeItens = this.itens.size();
            boolean éÚltimoÍndice = i == numeroDeItens - 1;
@@ -104,6 +193,7 @@ public abstract class Personagem
                 itemAtual.getDescricao() :
                 itemAtual.getDescricao() + ","
             );
+
         }
         */
         
@@ -119,6 +209,23 @@ public abstract class Personagem
         int numeroDeItens = this.itens.size();    
         
         while (i < numeroDeItens) {
+
+       }
+       */
+      
+      /*
+       * JavaScript
+      for (var i = 0, numeroDeItens = this.itens.size(); i < numeroDeItens; i++) {
+      }
+      */
+      
+     /*
+      * WHILE (ENQUANTO)
+      int i = 0;
+      int numeroDeItens = this.itens.size();    
+
+      while (i < numeroDeItens) {
+
           ItemDoInventario itemAtual = this.itens.get(i);
           boolean éÚltimoÍndice = i == numeroDeItens - 1;
            
@@ -129,6 +236,7 @@ public abstract class Personagem
           );
           //
           i++;
+
         }
         */
      
@@ -151,95 +259,6 @@ public abstract class Personagem
          return builder.toString();
     }
     
-    protected ItemDoInventario getItemComMaiorQuantidade() {
-        
-        ItemDoInventario itemMaiorQuantidade = null;
-        
-        boolean temItens = !this.itens.isEmpty();       
-        if (temItens) {
-            itemMaiorQuantidade = this.itens.get(0);
-            
-            for (int i = 1; i < this.itens.size(); i++) {
-                ItemDoInventario itemAtual = this.itens.get(i);
-                boolean encontreiAMaiorQuantidade =
-                    itemAtual.getQuantidade() > itemMaiorQuantidade.getQuantidade();
-                
-                if (encontreiAMaiorQuantidade) {
-                    // atualizar a minha referência para o maior parcial
-                    itemMaiorQuantidade = itemAtual;
-                }
-            }
-        }
-        
-        return itemMaiorQuantidade;
-        
-        // C#
-        // return this.itens.Max(x => x.Quantidade);
-    }
-    
-    /**
-     * Ordena itens do inventário por quantidade ascendente.
-     * 
-     * Algoritmo atual: Bubblesort
-     */
-    protected void ordenarItens() {
-
-        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
-        // iniciamos com true para forçar a entrada no laço.. poderia ter sido feito com do-while também
-        boolean posicoesSendoTrocadas = true;
-        
-        while (posicoesSendoTrocadas) {
-            posicoesSendoTrocadas = false;
-            for (int j = 0; j < this.itens.size() - 1; j++) {
-                ItemDoInventario itemAtual = this.itens.get(j);
-                ItemDoInventario proximo = this.itens.get(j + 1);
-                
-                boolean precisaTrocar = 
-                    itemAtual.getQuantidade() > proximo.getQuantidade();
-                
-                if (precisaTrocar) {
-                    this.itens.set(j, proximo);
-                    this.itens.set(j + 1, itemAtual);
-                    posicoesSendoTrocadas = true;
-                }
-            }
-        }
-        
-        /*
-        
-        // Versão mais simples porém mais instável do BubbleSort - sempre O(n^2)
-        int numeroItens = this.itens.size();
-        
-        for (int i = 0; i < numeroItens; i++) {
-            for (int j = 0; j < numeroItens - 1; j++) {
-                ItemDoInventario itemAtual = this.itens.get(j);
-                ItemDoInventario proximo = this.itens.get(j + 1);
-                
-                boolean precisaTrocar = 
-                    itemAtual.getQuantidade() > proximo.getQuantidade();
-                
-                if (precisaTrocar) {
-                    this.itens.set(j, proximo);
-                    this.itens.set(j + 1, itemAtual);
-                }
-            }
-        }*/
-        
-        // Java - MergeSort - O(n logn)
-        /*Collections.sort(this.itens, new Comparator<ItemDoInventario>() {
-            public int compare(ItemDoInventario item, ItemDoInventario outroItem) {
-                return Integer.compare(item.getQuantidade(), outroItem.getQuantidade());
-            }
-        });*/
-        
-        
-        // C# - MergeSort - O(n logn)
-        // return this.itens.OrderBy(x => x.Quantidade);
-        
-        // Ruby - QuickSort - O (n logn) em média, porém pior caso O(n^2)
-        // itens.sort_by { |x| x.quantidade }
-        
-    }
-    
     abstract void imprimeNome();
+
 }

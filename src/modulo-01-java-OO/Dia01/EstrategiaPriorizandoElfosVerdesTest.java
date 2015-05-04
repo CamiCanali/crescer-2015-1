@@ -16,13 +16,15 @@ public class EstrategiaPriorizandoElfosVerdesTest
         Elfo green1 = new ElfoVerde("Green 1");
         Elfo night3 = new ElfoNoturno("Night 3");
         Elfo green2 = new ElfoVerde("Green 2");
-        exercito.alistar(night1);
-        exercito.alistar(night2);
-        exercito.alistar(green1);
-        exercito.alistar(night3);
-        exercito.alistar(green2);
+
+        exercito.alistarElfo(night1);
+        exercito.alistarElfo(night2);
+        exercito.alistarElfo(green1);
+        exercito.alistarElfo(night3);
+        exercito.alistarElfo(green2);
+
         ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(green2, green1, night1, night2, night3)
+            Arrays.asList(green2, green1, night3, night2, night1)
         );
         // Act
         exercito.atacarHorda(new ArrayList<>(
@@ -39,12 +41,13 @@ public class EstrategiaPriorizandoElfosVerdesTest
         exercito.mudaDeEstrategia(new EstrategiaPriorizandoElfosVerdes());
         Elfo green1 = new ElfoVerde("Green 1");
         Elfo green2 = new ElfoVerde("Green 2");
-        exercito.alistar(green1);
-        exercito.alistar(green2);
-        ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(green2, green1)
+        exercito.alistarElfo(green1);
+        exercito.alistarElfo(green2);
+         ArrayList<Elfo> esperado = new ArrayList<>(
+          Arrays.asList(green2, green1)
         );
-        // Act
+       // Act
+
         exercito.atacarHorda(new ArrayList<>(
             Arrays.asList(new Orc(), new Orc(), new Orc())
         ));
@@ -52,3 +55,4 @@ public class EstrategiaPriorizandoElfosVerdesTest
         assertEquals(esperado, exercito.getOrdemDoUltimoAtaque());
     }
 }
+

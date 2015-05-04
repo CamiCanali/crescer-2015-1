@@ -1,50 +1,35 @@
-import java.util.Arrays;
-
+import java.util.*;
 /**
- * Define objetos ElfoVerde.
+ * Write a description of class ElfosVerdes here.
  * 
- * @author CWI Software
+ * @author Camila
+ * @version (a version number or a date)
  */
 public class ElfoVerde extends Elfo
-{
-    private final String[] ITENS_PERMITIDOS = new String[] {
-        "Espada de aço valiriano",
-        "Arco e Flecha de vidro"
-    };
+{   
+    private final ArrayList<String> ITENS_PERMITIDOS = new ArrayList<>();
+    {
+        ITENS_PERMITIDOS.add("Espada de aço Valiriano"); 
+        ITENS_PERMITIDOS.add("Arco e flecha de vidro");
+    }
     
-    public ElfoVerde(String nome) {
+    public ElfoVerde(String nome){
         super(nome);
     }
     
-    /**
-     * Atira a flecha "à moda verde".
-     * Por ser um elfo verde, ganhará o dobro de experiência que um Elfo comum.
-     * 
-     * @param orc Orc que receberá a flechada.
-     */
-    public void atirarFlecha(Orc orc) {
-        super.atirarFlecha(orc);
+    public void atirarFlecha(Orc umOrc) {
+        super.atirarFlecha(umOrc);
         this.experiencia++;
     }
-    
-    /**
-     * Adiciona o item no inventário, desde que o mesmo tenha descrição válida.
-     * Atuais descrições válidas: "Espada de aço valiriano", "Arco e Flecha de vidro"
-     * 
-     * @param item ItemDoInventario a ser adicionado
-     */
+   
     public void adicionarItem(ItemDoInventario item) {
-        
-        boolean descricaoValida = item != null && Arrays.asList(ITENS_PERMITIDOS).contains(item.getDescricao());
-
-        if (descricaoValida) {
+        if(item.getDescricao().equalsIgnoreCase("Espada de Aço Valiriano") || 
+        item.getDescricao().equalsIgnoreCase("Arco e Flecha de Vidro")){
             super.adicionarItem(item);
         }
-
     }
     
-    @Override
-    public String toString() {
-        return "Elfo Verde: " + super.toString();
+    public String toString(){
+        return "Elfo Verde" + super.toString();
     }
 }

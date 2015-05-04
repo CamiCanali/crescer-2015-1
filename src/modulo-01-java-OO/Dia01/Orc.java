@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class Orc extends Personagem
 {
+
+
     private final int NUMERO_SORTE = 3481;
 
     {
@@ -18,11 +20,13 @@ public class Orc extends Personagem
      */ 
     public Orc(String nome)
     {
+
         super(nome, 110);
     }
     
     public Orc() {
-        this("");
+        this("");//chama o construtor de cima
+
     }
     
     /**
@@ -54,7 +58,7 @@ public class Orc extends Personagem
         }
 
     }
-    
+
     public void setStatus(Status novoStatus) {
         this.status = novoStatus;
     }
@@ -62,7 +66,7 @@ public class Orc extends Personagem
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
     }
-    
+
     /**
      * Imprime a vida atual do Orc.
      * 
@@ -72,6 +76,7 @@ public class Orc extends Personagem
      */
     public String toString() {
         return "Vida atual: " + this.vida;
+
     } 
     
     /**
@@ -88,8 +93,9 @@ public class Orc extends Personagem
             }
         }
         
+
     }  
-    
+
     private double gerarNumero() {
         
         double numeroGerado = 0.0;
@@ -132,7 +138,9 @@ public class Orc extends Personagem
         return numeroGerado;
     }
     
-    public void imprimeNome() {
-        // TODO: System.out.println...
+
+    
+    public void imprimeNome(){
+        //???
     }
 }

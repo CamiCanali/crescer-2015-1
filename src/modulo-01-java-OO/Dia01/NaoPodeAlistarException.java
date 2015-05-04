@@ -1,11 +1,15 @@
+
 /**
- * Define o erro lançado quando um elfo não pode ser alistado.
+ * Erro quando o elfo tenta alistar um elfo que não pode ser alistado
  * 
- * @author CWI Software
+ * @author Camila 
+ * @version (a version number or a date)
  */
-public class NaoPodeAlistarException extends Exception {    
-    
-    public NaoPodeAlistarException() {
-        super("Erro ao alistar um Elfo. Por favor tente novamente e se o error persistir contate o Adminstrador.");
-    }
+public class NaoPodeAlistarException extends Exception
+{
+  
+   public NaoPodeAlistarException(){
+       super("Erro ao alistar um Elfo. Por favor, tente novamente e se o erro persistir contate o administrador");       
+   }
+
 }

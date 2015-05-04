@@ -1,29 +1,32 @@
 import java.util.*;
+/**
+ * elfos noturnos podem fazer 30% do ataque
+ * 
+ * @author Camila
+ * @version 15/04/2015
+ */
+
 public class EstrategiaNoturna implements EstrategiaDeAtaque
 {
     private ArrayList<Elfo> ordemAtaque = new ArrayList<>();
     
-    public void atacarOrcs(ArrayList<Elfo> elfos, ArrayList<Orc> orcs) {
-        System.out.println("Super estratégia noturna.. ATIVAR!!!");
-        
+
+     public void atacarOrcs(ArrayList<Elfo> elfos, ArrayList<Orc> orcs){
+        System.out.println ("Estratégia Noturna!");
         int qtdAtaques = elfos.size() * orcs.size();
         int limiteElfosNoturnos = (int)(qtdAtaques * 0.3);
         int qtdElfosNoturnosQueJáAtacaram = 0;
-        
-        for (Elfo elfoQueVaiAtacar : elfos) {
+        for(Elfo elfoQueVaiAtacar : elfos ){
             boolean éElfoNoturno = elfoQueVaiAtacar instanceof ElfoNoturno;
-            
-            if (éElfoNoturno) {
-                if (qtdElfosNoturnosQueJáAtacaram >= limiteElfosNoturnos)
+            if(éElfoNoturno){
+                if(qtdElfosNoturnosQueJáAtacaram >= limiteElfosNoturnos)
                     continue;
                 qtdElfosNoturnosQueJáAtacaram++;
-                ordemAtaque.add(elfoQueVaiAtacar);
+                ordemAtaque.add(elfoQueVaiAtacar);            
             }
-            
-            for (Orc orc : orcs) {
+            for(Orc orc : orcs){
                 elfoQueVaiAtacar.atirarFlecha(orc);
             }
-            
         }
     }
     
@@ -31,3 +34,7 @@ public class EstrategiaNoturna implements EstrategiaDeAtaque
         return ordemAtaque;
     }
 }
+
+   
+
+

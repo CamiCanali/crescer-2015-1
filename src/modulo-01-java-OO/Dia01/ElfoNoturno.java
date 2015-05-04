@@ -1,30 +1,26 @@
+
 /**
- * Descreve comportamento dos Elfos Noturnos.
+ * Write a description of class ElfoNoturno here.
  * 
- * @author CWI Software
+ * @author Camila 
+ * @version (a version number or a date)
  */
 public class ElfoNoturno extends Elfo
-{   
-    public ElfoNoturno(String nome) {
-        super(nome);
+{
+
+    public ElfoNoturno(String nome){
+      super(nome);
+    }
+  
+    public void atirarFlecha(Orc umOrc) {
+        super.atirarFlecha(umOrc);
+        this.experiencia += 2;
+        double qtdVidaAPerder = this.vida*0.05;
+        this.vida -= qtdVidaAPerder;
+        this.status = (int)this.vida ==0 ? Status.MORTO : this.status;
     }
     
-    /**
-     * Atira a flecha em um orc, ganhando o triplo de experiência e perdendo 5% da vida atual.
-     * 
-     * @param Orc orc que receberá a flechada.
-     */
-    public void atirarFlecha(Orc orc) {
-        super.atirarFlecha(orc);
-        this.experiencia += 2;
-        double qtdVidaAPerder = this.vida * 0.05;
-        //double qtdVidaAPerder = this.vida * 5/100;
-        this.vida -= qtdVidaAPerder;
-        this.status = (int)this.vida == 0 ? Status.MORTO : this.status;
-    }   
-    
-    @Override
-    public String toString() {
-        return "Elfo Noturno: " + super.toString();
+    public String toString(){
+        return "Elfo Noturno" + super.toString();
     }
 }

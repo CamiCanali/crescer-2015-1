@@ -5,9 +5,10 @@ public class EstrategiaPriorizandoElfosVerdes implements EstrategiaDeAtaque
     private ArrayList<Elfo> ordemAtaque = new ArrayList<>();
     
     public void atacarOrcs(ArrayList<Elfo> elfos, ArrayList<Orc> orcs) {
+
         //ordenaComBubbleSort(elfos);
         ordenaComCollectionSort(elfos);
-        
+
         for (Elfo elfo : elfos) {
             ordemAtaque.add(elfo);
             for (Orc orc : orcs) {
@@ -42,6 +43,7 @@ public class EstrategiaPriorizandoElfosVerdes implements EstrategiaDeAtaque
             }
             
         }
+
     }
     
     private void ordenaComCollectionSort(ArrayList<Elfo> elfos) {

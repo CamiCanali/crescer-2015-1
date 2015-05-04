@@ -13,7 +13,7 @@ import java.util.*;
 public class OrcTest
 {
     private final double DELTA = 0.005;
-    
+
     @Test
     public void orcNasceCom110Vida() {
         // Arrange - Montagem dos dados de teste
@@ -233,8 +233,9 @@ public class OrcTest
     public void orcRecebeAtaqueComNumeroGeradoMenorQueZero() {
         Orc orc = new Orc("Tom");
         orc.recebeAtaque();
-        
+
         double vidaEsperada = 110.0;
+
         int experienciaEsperada = 2;
         
         assertEquals(vidaEsperada, orc.getVida(), DELTA);
@@ -247,7 +248,10 @@ public class OrcTest
         orc.setExperiencia(1); // ímpar e menor que 2 para poder manter entre 0 e 100
         orc.recebeAtaque();
         
+
         double vidaEsperada = 110.0;
+
+
         int experienciaEsperada = 1;
         
         assertEquals(vidaEsperada, orc.getVida(), DELTA);
@@ -260,6 +264,8 @@ public class OrcTest
         orc.recebeAtaque();
         
         double vidaEsperada = 100.0;
+
+
         Status statusEsperado = Status.FERIDO;
         
         assertEquals(vidaEsperada, orc.getVida(), DELTA);
@@ -458,6 +464,7 @@ public class OrcTest
     }
     
     @Test
+
     public void ordenarItensComInventarioVazio() {
         // Arrange
         Orc orc = new Orc();
@@ -466,6 +473,17 @@ public class OrcTest
         orc.ordenarItens();
         // Assert
         assertEquals(inventarioVazio, orc.getItens());
+    }
+    
+    public void ordenarItensComNenhumItem() {
+        // Arrange
+        Orc urukhai = new Orc();
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<>();
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
     }
     
     @Test
@@ -522,7 +540,36 @@ public class OrcTest
         // Act
         orc.ordenarItens();
         // Assert
-        assertEquals(inventarioEsperado, orc.getItens());
+    }
+        
+    @Test
+    public void ordenarItensComVariosItens() {
+        // Arrange
+        Orc urukhai = new Orc();
+
+        ItemDoInventario adaga = new ItemDoInventario(15, "Adaga");
+        ItemDoInventario pocao = new ItemDoInventario(2,"Pocoes");
+        ItemDoInventario flecha = new ItemDoInventario(17, "Flechas");
+        ItemDoInventario pedraPreciosa = new ItemDoInventario(9, "Pedras preciosas");
+        ItemDoInventario beyBlade = new ItemDoInventario(18, "BeyBlade");
+        ArrayList<ItemDoInventario> inventarioEsperado = new ArrayList<ItemDoInventario>();
+        inventarioEsperado.add(pocao);
+        inventarioEsperado.add(pedraPreciosa);
+        inventarioEsperado.add(adaga);
+        inventarioEsperado.add(flecha);
+        inventarioEsperado.add(beyBlade);
+        urukhai.adicionarItem(pocao);
+        urukhai.adicionarItem(adaga);
+        urukhai.adicionarItem(pedraPreciosa);
+        urukhai.adicionarItem(beyBlade);
+        urukhai.adicionarItem(flecha);
+        
+        urukhai.ordenarItens();
+        // Act
+        ArrayList<ItemDoInventario> inventarioObtido = urukhai.getItens();
+        // Assert
+        assertEquals(inventarioEsperado, inventarioObtido);
+
     }
 }
 

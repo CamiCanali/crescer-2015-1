@@ -3,13 +3,35 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Testes unitários para a classe Elfo.
- *
- * @author  CWI Software
- */
 public class ElfoTest
 {
+    public void criarUmElfo(){
+        
+        Elfo elfo = new Elfo("Legolas");
+        //Elfo elfo2 = new Elfo("Jon");
+        int contadorEsperado = 1;
+        int contadorObtido = Elfo.getQtdElfosCriados();
+        assertEquals(contadorEsperado, contadorObtido);
+    }
+    
+    public void criarDoisElfos(){
+
+        Elfo elfo = new Elfo("Legolas");
+        Elfo elfo2 = new Elfo("Jon");
+        int contadorEsperado = 2;
+        int contadorObtido = Elfo.getQtdElfosCriados();
+        assertEquals(contadorEsperado, contadorObtido);
+    }
+    
+     @Test
+    public void doisElfosComDiferentesNomeSaoIguais(){
+        boolean esperado = false;
+        Elfo legolas = new Elfo("Legolas");
+        Elfo legolas2 = new Elfo("Golias");
+        assertEquals(esperado, legolas.equals(legolas2));
+    }
+    
+
     @Test
     public void elfoNasceComNomeInformado() {
         // Arrange
@@ -207,10 +229,4 @@ public class ElfoTest
         assertEquals(esperado, legolas.equals(legolas2));
     }
     
-    
-    
-    
 }
-
-
-

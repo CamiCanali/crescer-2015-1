@@ -7,10 +7,15 @@ public class EstrategiaIntercalada implements EstrategiaDeAtaque
     public void atacarOrcs(ArrayList<Elfo> elfos, ArrayList<Orc> orcs) {
         
         // garante que não ataca se a lista de elfos é vazia OU o exército não é proporcional (50%-50%)
+
         if (elfos.isEmpty() || !validarProporcoes(elfos)) {
             return;
         }
-        
+
+       if (elfos.isEmpty() || !validarProporcoes(elfos)) {
+            return;
+       }
+
         intercalar(elfos);
         
         for (Elfo elfo : ordemAtaque) {
@@ -32,7 +37,8 @@ public class EstrategiaIntercalada implements EstrategiaDeAtaque
             if (elfo instanceof ElfoVerde) {
                 contadorElfosVerdes++;
             } else if (elfo instanceof ElfoNoturno) {
-                contadorElfosNoturnos++;
+               contadorElfosNoturnos++;
+
             }
         }
         
@@ -59,4 +65,8 @@ public class EstrategiaIntercalada implements EstrategiaDeAtaque
             }
         }
     }
+
 }
+
+
+

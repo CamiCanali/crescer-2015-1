@@ -1,12 +1,8 @@
 
-/**
- * Define objetos Elfo
- * 
- * @author CWI Software
- */
 public class Elfo extends Personagem
 {
     // Versão correção do tema!!
+
     private int flechas;
     private static int qtdElfosCriados;
     private int x;
@@ -15,7 +11,9 @@ public class Elfo extends Personagem
     {
         flechas = 42;
         vida = 100;
+
         Elfo.qtdElfosCriados++;
+
     }
     
     /**
@@ -53,7 +51,8 @@ public class Elfo extends Personagem
         status = Status.ATACANDO;
     }
     
-    public String getNome() {
+    public String getNome(){
+
         return this.nome;
     }
     
@@ -61,6 +60,7 @@ public class Elfo extends Personagem
         return this.flechas;
     }
     
+
     public static int getQtdElfosCriados() {
         return Elfo.qtdElfosCriados;
     }
@@ -69,6 +69,7 @@ public class Elfo extends Personagem
         Elfo.qtdElfosCriados = 0;
     }
     
+
     /*public void setFlechas(int novaQtdFlechas) {
         if (novaQtdFlechas > flechas) {
             flechas = novaQtdFlechas;
@@ -134,20 +135,16 @@ public class Elfo extends Personagem
         builder.append(textoNiveis);
         builder.append(" de experiência.");*/
     }
-    
-    /**
-     * Verifica se dois elfos são iguais.
-     * Critério atual: ter o mesmo nome.
-     * 
-     * @param outro Outro objeto elfo a ser comparado.
-     * @return boolean Verdadeiro caso sejam iguais. Falso caso contrário.
-     */
+
     @Override
-    public boolean equals(Object outro) {
-        return ((Elfo)outro).getNome().equals(this.nome);
+    public boolean equals(Object outro){
+            //Elfo outroElfo = (Elfo)outro;
+            //boolean saoIguais = this.nome.equals(outroElfo.getNome());
+            return ((Elfo)outro).getNome().equals(this.nome);
     }
     
-    public void imprimeNome() {
-        // TODO: System.out.println...
+    public void imprimeNome(){
+    //???
     }
+
 }

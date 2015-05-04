@@ -13,19 +13,21 @@ public class EstrategiaIntercaladaTest
         exercito.mudaDeEstrategia(new EstrategiaIntercalada());
         Elfo night1 = new ElfoNoturno("Night 1");
         Elfo night2 = new ElfoNoturno("Night 2");
-        Elfo green1 = new ElfoVerde("Green 1");
+       Elfo green1 = new ElfoVerde("Green 1");
         Elfo night3 = new ElfoNoturno("Night 3");
-        Elfo green2 = new ElfoVerde("Green 2");
+       Elfo green2 = new ElfoVerde("Green 2");
         Elfo green3 = new ElfoVerde("Green 3");
-        exercito.alistar(night1);
-        exercito.alistar(night2);
-        exercito.alistar(green1);
-        exercito.alistar(night3);
-        exercito.alistar(green2);
-        exercito.alistar(green3);
+        exercito.alistarElfo(green1);
+        exercito.alistarElfo(night1);
+        exercito.alistarElfo(green2);
+        exercito.alistarElfo(night2);
+        exercito.alistarElfo(green3);
+        exercito.alistarElfo(night3);
+    
         ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(green2, night1, green3, night2, green1, night3)
-        );
+            Arrays.asList(green2, night3, green3, night2, green1, night1)
+       );
+
         // Act
         exercito.atacarHorda(new ArrayList<>(
             Arrays.asList(new Orc(), new Orc(), new Orc())
@@ -44,12 +46,14 @@ public class EstrategiaIntercaladaTest
         Elfo night2 = new ElfoNoturno("Elfo Noturno 2");
         Elfo green1 = new ElfoVerde("Elfo Verde 1");
         Elfo green2 = new ElfoVerde("Green 2");
-        exercito.alistar(green1);
-        exercito.alistar(green2);
-        exercito.alistar(night1);
-        exercito.alistar(night2);
+
+        exercito.alistarElfo(green1);
+        exercito.alistarElfo(green2);
+        exercito.alistarElfo(night1);
+        exercito.alistarElfo(night2);
         ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(night2, green1, night1, green2)
+            Arrays.asList(night1, green2, night2, green1)
+
         );
         // Act
         exercito.atacarHorda(new ArrayList<>(
@@ -68,9 +72,11 @@ public class EstrategiaIntercaladaTest
         Elfo night1 = new ElfoNoturno("Noturno 1");
         Elfo night2 = new ElfoNoturno("Elfo Noturno 2");
         Elfo green1 = new ElfoVerde("Elfo Verde 1");
-        exercito.alistar(green1);
-        exercito.alistar(night1);
-        exercito.alistar(night2);
+
+        exercito.alistarElfo(green1);
+        exercito.alistarElfo(night1);
+        exercito.alistarElfo(night2);
+
         ArrayList<Elfo> esperado = new ArrayList<>();
         // Act
         exercito.atacarHorda(new ArrayList<>(
@@ -80,4 +86,6 @@ public class EstrategiaIntercaladaTest
         ArrayList<Elfo> resultado = exercito.getOrdemDoUltimoAtaque();
         assertEquals(esperado, resultado);
     }
+
 }
+
