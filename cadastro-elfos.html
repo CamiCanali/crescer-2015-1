@@ -1,0 +1,54 @@
+<!doctype>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cadastro de Elfos</title>
+	</head>
+	<body>
+		<form>
+				<div>
+					<label for="nome">Nome do Elfo:</label>
+					<input id="nome" name="nome" type="text">
+				</div>
+				<div>
+					<label for="radio">Sexo:</label>
+					<input type="radio" name="male" value="0">Male</input>
+					<input type="radio" name="female" value="1">Female</input>
+				</div>
+				<div>
+					<label for="number">Quantidade de flechas iniciais do Elfo:</label>
+					<input type="number" name="someid" />
+				</div>
+				<div>
+					<label for "text">Data de nascimento:</label>
+					<input type="text" placeholder="dd/mm/yyyy" id="input_date" name="birthdate" maxlength="10"  />
+				</div>
+				<div>
+					<label for "name">Status inicial do Elfo:</label>
+					<select name="status"> 
+					<option value="Dormindo">Dormindo</option>
+					<option value="Caçando">Caçando</option>    
+					<option value="Contando piada">Contando piada</option>    
+					</select>
+				</div>
+				<div>
+					<label for "name">Itens iniciais do Elfo:</label>
+					<br>
+					<input name="itens[]" type="checkbox" value="Arco e flecha" /> Arco e flecha
+					<br>
+					<input name="itens[]" type="checkbox" value="Espada de aço porto-alegrense" /> Espada de aço porto-alegrense
+					<br>
+					<input name="itens[]" type="checkbox" value="Escudo de amburana" />Escudo de amburana
+					<br>
+					<input name="itens[]" type="checkbox" value="Poção HP" /> Poção HP
+				</div>
+				<div >
+				<label for="image">Photo</label>
+				<input  type="file" accept="image.jpg | image.png" />
+				</div>
+				<div>
+					<input type="submit" value="Cadastrar!">
+				</div>
+		</form>
+	</body>
+</html>	
