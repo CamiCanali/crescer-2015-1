@@ -213,7 +213,7 @@ public class ExercitoDeElfosTest
         elfoAtacando2.atirarFlecha(new Orc());
         HashMap<Status, ArrayList<Elfo>> esperado = new HashMap<>();
          esperado.put(Status.VIVO, new ArrayList<>(
-            Arrays.asList(elfoVivo3, elfoVivo2, elfoVivo1)
+            Arrays.asList(elfoVivo2, elfoVivo3, elfoVivo1)
         ));
         esperado.put(Status.ATACANDO, new ArrayList<Elfo>(
         
@@ -268,8 +268,7 @@ public class ExercitoDeElfosTest
         assertEquals(esperado, resultado);
     }
     
-    @Test
-
+    @Test(expected=NaoPodeAlistarException.class)
      public void alistarElfoBaseLançaErro() throws NaoPodeAlistarException {
 
         // Arrange
