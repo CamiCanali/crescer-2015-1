@@ -1,0 +1,11 @@
+Porta https 443
+Console no navegador f12
+
+http://tableless.com.br/
+
+
+O firefox não aceita date
+
+Select ocupa menos espaço que o radio.
+
+em- unidade virtual, tamanho calculado proporcinalmente ao tamanho da tela
