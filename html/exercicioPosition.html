@@ -1,0 +1,37 @@
+<!doctype>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<style>
+		body{
+			margin: 0;
+		}
+		.fixo{
+			position: fixed;
+			top: 50px;
+			left: 700px;
+		}
+		.retangulo-azul{
+			background-color: blue;
+			height: 200px;
+			width: 450px;
+			top: 200px;
+		}
+		.absoluta{
+			position: absolute;
+			top: 150px;
+			right: -20px;
+		}
+		.relativa{
+			position: relative; 
+		}
+		</style>
+	</head>
+	<body>		
+				<img class="relativa'" src="http://blog.centrodenutricioncanina.com/wp-content/uploads/2013/09/gato-300x160.jpg" />
+				<img  class="fixo" src="http://blog.centrodenutricioncanina.com/wp-content/uploads/2013/09/gato-300x160.jpg" />
+				<div class="relativa retangulo-azul">
+					<img  class="absoluta" src="http://blog.centrodenutricioncanina.com/wp-content/uploads/2013/09/gato-300x160.jpg"  height=60px width=160px />
+				</div>
+	</body>
+</html>
