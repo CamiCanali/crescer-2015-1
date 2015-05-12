@@ -149,16 +149,30 @@
 
 <script src="libs/jquery-1.5.0.js"></script>
 <script>
-//1
+//1a
 $(".module");
 //1b
-$('mylist')[2];
+$('#myList li:eq(2)');
 //1c
-$("input[label='q']");
+$("label[for=q]"); //ou
+$('#search label[for=q]');
 //1d
-$(document).ready(function(){
-	var  count = parseInt('alt')
-
+$('[alt]').length;
+//1e
+('#fruits tbody tr:odd'); //ou
+('#fruits tr:even:not(:first-child)');
+//1f
+$('h2:contains("B"):contains("e")').length;
+//1g
+$('#myList li:.current');
+//1h
+$('img:last, h3:last'); //ou
+$('li:last-of-type img, li:last-of-type h3');
+//1i
+$('#myList .current ~li').text().length;
+$('#myList .current').nextAll().text().length;
+//3c
+$('div.module').last().after($('<div/>').addClass('module').append($('img:eq(0)').clone()));
 </script>
 <!--
 <script src="js/sandbox.js"></script>

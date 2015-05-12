@@ -9,3 +9,8 @@ O firefox não aceita date
 Select ocupa menos espaço que o radio.
 
 em- unidade virtual, tamanho calculado proporcinalmente ao tamanho da tela
+
+https://gist.github.com/bernardobrezende/652cc9d5cd65889b8f78
+					/vUR0R
+coffescript - compilador
+flatuicolors.com -paleta de cores
