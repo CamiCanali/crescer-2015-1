@@ -1,5 +1,4 @@
-package listator;
-
+package filmator;
 public class Ator {
 	private String nome;
 	

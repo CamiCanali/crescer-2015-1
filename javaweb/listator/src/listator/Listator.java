@@ -34,7 +34,7 @@ public class Listator {
 			File arquivo = new File("/home/hallan/nome_do_arquivo.txt");
 			 
 			File aquivoLido = new File("");
-			 arquivoLido = lerArquivo(file);
+			// arquivoLido = lerArquivo(file);
 			}
 }
 
