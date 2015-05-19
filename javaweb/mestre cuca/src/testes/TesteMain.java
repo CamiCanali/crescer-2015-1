@@ -59,20 +59,25 @@ public class TesteMain {
 	@Test
 	public void atualizarUmaReceita(){
 		List<Ingrediente> i = new ArrayList<>();
+		List<Ingrediente> i2 = new ArrayList<>();
 		List<Instrucao> in = new ArrayList<>();
-		List<Receita> livro = new ArrayList<>();
-		Livro l = new Livro();
+		Livro livro = new Livro();
 		Ingrediente ovo = new Ingrediente("Ovo", 2, UnidadeMedida.UNIDADE);
 		Ingrediente coco = new Ingrediente("Côco", 3, UnidadeMedida.XICARA);
+		Ingrediente leite = new Ingrediente("Leite", 2, UnidadeMedida.XICARA);
 		Instrucao ins = new Instrucao("Misture tudo");
 		i.add(ovo);
+		i2.add(ovo);
 		i.add(coco);
+		i2.add(coco);
+		i2.add(leite);
 		in.add(ins);
-		Receita r = new Receita ("Quindim", i, in);
-		Receita r2 = new Receita ("Quindim", i, in);
-		l.inserir(r);
-		int esperado = 2;
-		int obtido = livro.size();
-		assertEquals(esperado, obtido);
+		Receita receita = new Receita ("Quindim", i, in);
+		Receita receitaAtualizada = new Receita ("Quindim novo", i2, in);	
+		livro.inserir(receita);
+		livro.atualizar("Quindim", receitaAtualizada);
+		Receita obtida = livro.buscaReceitaPeloNome("Quindim");
+		Receita esperada = receitaAtualizada;
+		assertEquals(esperada, obtida);
 	}
 }
