@@ -1,0 +1,70 @@
+<script>
+function palindrome(str) {
+    var len = str.length;
+    for ( var i = 0; i < Math.floor(len/2); i++ ) {
+        if (str[i] !== str[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+.replace(/ /g, '')
+.replace(/[^a-zA-Z ]/g, ""));
+
+var palindromo = function(palavra) {
+
+  String.prototype.sanitize = function() {
+    var diacritics = [
+      { original: /[âáàã]/gi,  sanitized: 'a' },
+      { original: /[éèê]/gi,   sanitized: 'e' },
+      { original: /[íìî]/gi,   sanitized: 'i' },
+      { original: /[ôõóò]/gi,  sanitized: 'o' },
+      { original: /[úùû]/gi,   sanitized: 'u' },
+    ];
+    var self = this;
+    diacritics.forEach(function(i) {
+      self = self.replace(i.original, i.sanitized);
+    });
+    return self.replace(/[^a-zA-Z_-]/g, '').toLowerCase();
+  };
+
+  String.prototype.inverter = function() {
+    return this.split('').reverse().join('');
+  };
+
+  Array.prototype.contains = function(str) {
+    return this.indexOf(str) !== -1;
+  }
+
+  palavra = palavra.sanitize();
+
+  return (
+    ['iluminatti', 'ledesma', 'dante', 'verdemusgo', 'bacon'].contains(palavra) ||
+    palavra.inverter() === palavra
+  );
+
+};
+
+// Casos de teste
+[
+  { teste: 'ovo', esperado: true },
+  { teste: 'ôvo', esperado: true },
+  { teste: 'arara', esperado: true },
+  { teste: 'rodador', esperado: true },
+  { teste: 'O tRoTe ToRtO', esperado: true },
+  { teste: 'bacon', esperado: true },
+  { teste: 'A miss é péssima!', esperado: true },
+  { teste: 'VERDE musgo!!', esperado: true },
+  { teste: 'Nova Schin, cervejão!', esperado: false },
+  { teste: 'camigoal', esperado: false },
+  { teste: 'ledesma@@@@@@@@', esperado: true },
+  { teste: '!!d@ante!?!?', esperado: true },
+  { teste: '1@ilu$$$m1in$$$$$$$$$$4att$$$$$$$$1i!!!!!', esperado: true }
+].forEach(
+  function(ct) {
+    var res = palindromo(ct.teste);
+    console.assert(res === ct.esperado, 'Errooooou! CT:', ct.teste, 'Esperado:', ct.esperado, 'Obtido:', res);
+  }
+);
+</script>

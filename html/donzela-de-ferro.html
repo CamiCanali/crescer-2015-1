@@ -1,0 +1,36 @@
+<!doctype>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spotify Iron Maiden</title>
+    <style>
+      body{
+        margin: 0;
+      }
+
+       .tamanhoAlbuns{
+	        height: 300px;
+	         width: 300px;
+       }
+    </style>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    var albuns = [];
+    $(function() {
+      $.ajax({
+        url: "https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?limit=50",
+        type: 'GET'
+        dataType: 'json'}).
+        done(function(data) {
+          albuns = $.extend({}, data.items);
+	         $.each(albuns, function(i, album){
+			          $('.tamanhoAlbuns').append($('<img/>', {src: album.images[1].url}));
+		  })
+      });
+  });
+
+    </script>
+  </body>
+</html>
