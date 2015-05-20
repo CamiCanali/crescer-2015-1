@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+
+	<script>
+	$(function(){
+       autenticaUsuario();
+    })
+
+
+	function autenticaUsuario(){
+		$.ajax({
+		url:'http://illuminati.instaweb.com.br:6789/autentica',
+		type: 'post',
+		dataType: 'json',
+		data: '{nome:"Camila"}'
+		});
+
+	}
+	
+	function obtemExercicio(){
+		$.ajax({
+		url:'http://illuminati.instaweb.com.br:6789/exercicios?token=b2bccc5a1e38',
+		type: 'get',
+		dataType: 'json'
+		});
+
+	}
+	
+	function autenticaUsuario(){
+		$.ajax({
+		url:'http://illuminati.instaweb.com.br:6789/exercicios?token=b2bccc5a1e38',
+		type: 'post',
+		dataType: 'json',
+		data: '{ resposta: "8"}'
+		});
+
+	}
+	</script>
+	
+</body>
+</html>
+  
