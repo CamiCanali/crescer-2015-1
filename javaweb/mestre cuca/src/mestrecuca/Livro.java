@@ -41,14 +41,15 @@ public class Livro implements LivroReceita{
 	}
 
 	public Receita buscaReceitaPeloNome(String nome){
-		if(listaReceitas.contains(nome)){
-				return listaReceitas.get(listaReceitas.indexOf(nome));
+		for (int i = 0; i < listaReceitas.size(); i++){
+			if(listaReceitas.get(i).getNome().equals(nome)){
+				return listaReceitas.get(i);
+			}
 		}
-		else{
-			throw new IllegalArgumentException("Não existe essa receita!");
-		}
-	}
+		throw new IllegalArgumentException("Não existe essa receita!");
 	
+	}
+
 	public double calculaValorTotalTodasReceitas(){
 		double total = 0;
 		for(int i = 0; i < listaReceitas.size(); i++){
