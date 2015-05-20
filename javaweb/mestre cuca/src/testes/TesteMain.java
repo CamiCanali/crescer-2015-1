@@ -56,8 +56,8 @@ public class TesteMain {
 		assertEquals(esperado, obtido);
 	}
 	
-	@Test
-	/*public void atualizarUmaReceita(){
+	/*@Test
+	public void atualizarUmaReceita(){
 		List<Ingrediente> i = new ArrayList<>();
 		List<Ingrediente> i2 = new ArrayList<>();
 		List<Instrucao> in = new ArrayList<>();
@@ -109,8 +109,8 @@ public class TesteMain {
 		l.inserir(arrozDoce);
 		l.inserir(carnePanela);
 		l.listaCompras(l.listaReceitas);
-		List<Ingrediente> esperado = ;
+		//List<Ingrediente> esperado = ;
 		List<Ingrediente> obtido = l.listaCompras(l.listaReceitas);
-		assertEquals(esperado, obtido);
+		//assertEquals(esperado, obtido);
 	}
 }

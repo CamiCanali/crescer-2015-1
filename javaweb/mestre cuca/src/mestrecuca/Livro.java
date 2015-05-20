@@ -7,7 +7,7 @@ public class Livro implements LivroReceita{
 	public List<Receita> listaReceitas = new ArrayList<>();
 
 	public void inserir(Receita receita){
-		if(receita != null){
+		if(receita != null || receita.getNome() != null || !receita.getNome().trim().equals("")){
 			listaReceitas.add(receita);
 		}else{
 			throw new IllegalArgumentException("Não é possível inserir essa receita!");
@@ -15,11 +15,9 @@ public class Livro implements LivroReceita{
 	}
 
 	public void atualizar(String nome, Receita receitaAtualizada){
-		Receita encontrada;
-		int indice = 0;
-		if(receitaAtualizada != null){
-			encontrada = buscaReceitaPeloNome(nome);
-			indice = listaReceitas.indexOf(encontrada);
+		if(receitaAtualizada != null || receitaAtualizada.getNome() != null || !receitaAtualizada.getNome().trim().equals("")){
+			Receita encontrada = buscaReceitaPeloNome(nome);
+			int indice = listaReceitas.indexOf(encontrada);
 			listaReceitas.set(indice, receitaAtualizada);
 		}
 		else{
@@ -30,7 +28,7 @@ public class Livro implements LivroReceita{
 
 	public void excluir(String nome) {
 		for(int i = 0; i < listaReceitas.size(); i++){
-			if(listaReceitas.contains(nome)){
+			if(listaReceitas.get(i).getNome().equals(nome)){
 				listaReceitas.remove(i);
 			}
 		}
@@ -41,6 +39,10 @@ public class Livro implements LivroReceita{
 	}
 
 	public Receita buscaReceitaPeloNome(String nome){
+		/*for(Receita receita: listaReceitas){
+		 * if(receita.getNome().equals(nome)
+		 * return receita;
+		}*/
 		for (int i = 0; i < listaReceitas.size(); i++){
 			if(listaReceitas.get(i).getNome().equals(nome)){
 				return listaReceitas.get(i);
@@ -58,7 +60,7 @@ public class Livro implements LivroReceita{
 		return total;
 	}
 	
-	public List<Receita> ingredientesAlergicos(List<Ingrediente> ingredientesProibidos){
+	public List<Receita> buscaReceitasSemIngredientes(List<Ingrediente> ingredientesProibidos){
 		List<Receita> receitasNaoAlergicas = new ArrayList<Receita>();
 		for(int i = 0; i < listaReceitas.size(); i++){
 			if(!ingredientesProibidos.contains(listaReceitas.get(i).getIngredientes())){
