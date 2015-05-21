@@ -34,15 +34,18 @@
 
 	}
 	
-	function autenticaUsuario(){
+	function passarResposta(){
 		$.ajax({
 		url:'http://illuminati.instaweb.com.br:6789/exercicios?token=b2bccc5a1e38',
 		type: 'post',
 		dataType: 'json',
-		data: '{ resposta: "8"}'
+		data: JSON.stringify('{ resposta: 8}')
+		
 		});
 
 	}
+	
+	
 	</script>
 	
 </body>
