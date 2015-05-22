@@ -59,9 +59,9 @@ public class Livro implements LivroReceita{
 	
 	public List<Receita> buscaReceitasSemIngredientes(List<String> ingredientesProibidos){
 		List<Receita> receitasNaoAlergicas = new ArrayList<Receita>();
-		for(int i = 0; i < listaReceitas.size(); i++){
-			if(!ingredientesProibidos.contains(listaReceitas.get(i).getIngredientes())){
-				receitasNaoAlergicas.add(listaReceitas.get(i));
+		for(Receita receita : listaReceitas){
+			if(!receita.contemUmDosIngredientes(ingredientesProibidos)){
+				receitasNaoAlergicas.add(receita);
 			}
 		}
 		return receitasNaoAlergicas;

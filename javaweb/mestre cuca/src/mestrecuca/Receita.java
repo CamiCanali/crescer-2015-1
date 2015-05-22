@@ -8,10 +8,8 @@ public class Receita {
 	private List<Ingrediente> ingredientes= new ArrayList<>();
 	private List<Instrucao> instrucoes = new ArrayList<>();
 	
-	public Receita(String nome, List<Ingrediente> ingredientes, List<Instrucao> instrucoes){
+	public Receita(String nome){
 		this.nome = nome;
-		this.ingredientes = ingredientes;
-		this.instrucoes = instrucoes;
 	}
 	
 	public Receita(){
@@ -36,5 +34,18 @@ public class Receita {
 	
 	public Ingrediente getUmIngrediente(int posicao){
 		return ingredientes.get(posicao);
+	}
+	
+	public void adicionarIngrediente(Ingrediente ingrediente){
+		this.ingredientes.add(ingrediente);
+	}
+	
+	public boolean contemUmDosIngredientes(List<String> ingredientesProibidos) {
+		for(Ingrediente ingrediente : ingredientes){
+			if(ingredientesProibidos.contains(ingrediente.getNome())){
+				return true;
+			}
+		}
+		return false;
 	}
 }
