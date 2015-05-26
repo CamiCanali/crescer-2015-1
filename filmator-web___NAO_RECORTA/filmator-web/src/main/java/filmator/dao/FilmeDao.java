@@ -19,7 +19,6 @@ public class FilmeDao {
 	@Inject
 	private JdbcTemplate jdbcTemplate;
 	
-	
 	public void inserir(Filme filme){
 		jdbcTemplate.update("INSERT INTO Filme (nome, genero, ano, imagem) VALUES (?,?,?,?)", filme.getNome(), 
 				filme.getGenero(),filme.getAno(), filme.getImagem());
@@ -41,5 +40,6 @@ public class FilmeDao {
 				}			
 		});	
 	}
+	
 }
  
