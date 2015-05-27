@@ -40,6 +40,18 @@ public class FilmeDao {
 				}			
 		});	
 	}
+
+
+	public Filme buscaFilmePeloNome(String nome) {
+		return jdbcTemplate.query("SELECT * FROM Filmes where nome like ?", (ResultSet rs, int rownum ) -> {	
+			Filme filme = new Filme();
+			filme.setNome(rs.getString("nome"));
+			filme.setGenero(rs.getString("genero"));
+			filme.setAno(rs.getString("ano"));
+			filme.setImagem(rs.getString("url"));
+			return filme;
+		});
+	}
 	
 }
  

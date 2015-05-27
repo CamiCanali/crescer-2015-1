@@ -43,4 +43,9 @@ public class FilmeController {
 		return filmeDao.buscaTodosFilmesJava8();
 	}
 	
+	@RequestMapping(value = "/buscarUm", method = RequestMethod.GET)
+	public Filme buscarUm(Model model, String nome) {
+			return filmeDao.buscaFilmePeloNome(nome);
+	}
+	
 }

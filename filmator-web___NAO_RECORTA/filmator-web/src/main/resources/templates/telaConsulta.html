@@ -5,5 +5,15 @@
 <body>
 	<form action="/buscarTodos" method="get">
 		<label>Lista de filmes</label>
+		
+		<div style="margin: 0 auto; text-align: center; width: 500px; height: 500px; border: 1px solid black">
+    	<form action = "/consultarTodos" method = "post">
+            <h1>Lista de filmes:</h1>
+
+                <label>Nome</label>
+                <input type="text" name="nome" required="required" maxlength="62"/>
+                <input type="submit" name="buscar" value="Localizar">
+    	</form>
+    </div>
 </body>
 </html>
