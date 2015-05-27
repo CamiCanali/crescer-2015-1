@@ -21,7 +21,7 @@ public class FilmeDao {
 	
 	public void inserir(Filme filme){
 		jdbcTemplate.update("INSERT INTO Filme (nome, genero, ano, imagem) VALUES (?,?,?,?)", filme.getNome(), 
-				filme.getGenero(),filme.getAno(), filme.getImagem());
+				filme.getGenero().name(),filme.getAno(), filme.getImagem());
 	}
 	
 	public List<Filme> buscaTodosFilmesJava8(){
@@ -31,27 +31,28 @@ public class FilmeDao {
 			
 				@Override
 				public Filme mapRow(ResultSet rs, int arg) throws SQLException {
+					Genero genero = Genero.valueOf(rs.getString("genero"));
 					Filme filme = new Filme();
 					filme.setNome(rs.getString("nome"));
+					filme.setGenero(genero);
 					filme.setAno(rs.getInt("ano"));
-					filme.setGenero(Genero.valueOf(rs.getString("genero")));
 					filme.setImagem(rs.getString("imagem"));			
 					return filme;
 				}			
 		});	
 	}
 
-
-	public Filme buscaFilmePeloNome(String nome) {
-		return jdbcTemplate.query("SELECT * FROM Filmes where nome like ?", (ResultSet rs, int rownum ) -> {	
-			Filme filme = new Filme();
-			filme.setNome(rs.getString("nome"));
-			filme.setGenero(rs.getString("genero"));
-			filme.setAno(rs.getString("ano"));
-			filme.setImagem(rs.getString("url"));
-			return filme;
-		});
+	public List<Filme> buscaFilmePeloNome(String nome) {
+		return jdbcTemplate.query("SELECT * FROM Filme where nome like (?)", new RowMapper<Filme>() {
+			public Filme mapRow(ResultSet rs, int rowNum) throws SQLException{
+				Filme filme = new Filme();
+				filme.setNome(rs.getString("nome"));
+				filme.setGenero(Genero.valueOf(rs.getString("genero")));
+				filme.setAno(rs.getInt("ano"));
+				filme.setImagem(rs.getString("imagem"));
+				return filme;
+			}
+		}, nome);
 	}
-	
 }
  

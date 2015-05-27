@@ -18,22 +18,24 @@ import filmator.model.Genero;
 
 @Controller
 public class FilmeController {
-
 	
 	@Inject 
 	private FilmeDao filmeDao;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("filmes",  new ArrayList<>());
 		model.addAttribute("listaGeneros", Genero.values()); 
 		return "telaCadastro";
+	}
+
+	@RequestMapping(value = "/consulta", method = RequestMethod.GET)
+	public String consulta(Model model) {		
+		return "telaConsulta";
 	}
 		
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public String inserir(Model model, Filme filme) {
 		filmeDao.inserir(filme);
-		model.addAttribute("mensagem", "Filme inserido com sucesso!");
 		return "telaCadastro";
 	}	
 	
@@ -44,8 +46,8 @@ public class FilmeController {
 	}
 	
 	@RequestMapping(value = "/buscarUm", method = RequestMethod.GET)
-	public Filme buscarUm(Model model, String nome) {
-			return filmeDao.buscaFilmePeloNome(nome);
-	}
-	
+	public String buscarUm(String nome, Model model) {
+		model.addAttribute("filme", filmeDao.buscaFilmePeloNome(nome));	
+		return "telaConsulta";
+	}	
 }

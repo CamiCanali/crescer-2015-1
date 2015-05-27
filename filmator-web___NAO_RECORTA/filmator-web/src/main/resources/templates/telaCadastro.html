@@ -2,43 +2,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro de filmes</title>
-	
+	<link rel="stylesheet" type="text/css" href="tela.css"/>
 </head>
 <body>
-	<div class= "fundo"style="margin: 0 auto; text-align: center; width: 500px; height: 450px; border: 1px solid black">
-	<table class="table-hover"cellpadding="15" style="border-collapse: collapse;
-		color: white; background-color:gray; width:50px; margin: 10px auto;">
-			<thead>
-				<th>Cadastro de filme</th>
-			</thead> 
-			<tbody> 
-	<form action="/inserir" method="post">
-			<tr>
-				<td><label>Nome:</label></td>
-				<td><input name = "nome"></td>
-			</tr>
-			<tr>
-			<td><label for="genero">Genero:</label></td>
-			<td><select name="genero">
+
+	<div class="body" style="margin: 0 auto; text-align: center; width: 500px; height: 450px;">
+	
+				<h1>Cadastro de filme</h1>
+
+		<form action="/inserir" method="post">
+			<p>
+				<label>Nome:</label>
+				<input name = "nome">
+			</p>
+			<p>
+			<label for="genero">Gênero:</label>
+			<select name="genero">
    				{{#listaGeneros}}
    				<option value="{{name}}">{{descricao}}</option>
    				{{/listaGeneros}}
- 			</select></td>
- 			</tr>
-			<tr>
-				<td><label>Ano:</label></td>
-				<td><input ano = "ano"></td>
-			</tr>	
-			<tr>
-				<td><label for="imagem">Imagem:</label></td>
-				<td><input type="text" name="imagem" accept="url" /></td>
-			</tr>
-	
+ 			</select>
+ 			</p>
+ 			<p>
+				<label>Ano:</label>
+				<input name = "ano">
+			</p>
+			<p>
+				<label for="imagem">Imagem:</label>
+				<input type="text" name="imagem" accept="url" />
+			</p>
+			<p>
 			<button>Salvar</button>
+			</p>
 
 		</form>
-		</tbody>
-		</table>
 		</div>
 </body>
 </html>
