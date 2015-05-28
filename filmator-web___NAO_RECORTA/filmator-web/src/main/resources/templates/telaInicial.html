@@ -1,15 +1,28 @@
 <!doctype html>
 <head>
 	<meta charset="UTF-8">
-	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	<link type="text/css" rel="stylesheet" href="tela.css"/>
 </head>
 <body>
-
-	 <form action="" class="button">
-	 <label>Selecione a opção desejada</label>
-         <input type="button" value="Fazer login" onclick="window.location.href='/telaCadastra';"/>
-         <input type="button" value="Consultar catálogo" onclick="window.location.href='/telaConsulta';"/>
-
+	<div class="body" style="margin: 0 auto; text-align: center; width: 500px; height: 450px; border: 2px black">
+	 <form class="button" method="post">
+	 <label>Filmator</label>
+     <p>    
+     	<label for="usuario">UsuÃ¡rio</label>
+		<input type="text" id="usuario" name="usuario" 
+			data-type="text" data-title="Usuario">
+	</p>		
+	<p>
+		<label for="password">Senha</label>
+		<input type="password" id="password" name="password"
+	 		data-type="usuario" data-title="Senha" autocomplete="current-password">
+	</p>
+	<p>
+		<button class="red" type="submit">Entrar</button>
+        <input type="hidden" value="window.location.href='/telaConsulta';"/>
+    	<input type="button" value="Cadastrar" onclick="window.location.href='/telaConsulta';"/>
+     </p>
     </form> 
+    </div>
 </body>
 </html>

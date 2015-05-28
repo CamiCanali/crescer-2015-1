@@ -24,8 +24,8 @@ public class FilmeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("listaGeneros", Genero.values()); 
-		return "telaCadastro";
+		//model.addAttribute("listaGeneros", Genero.values()); 
+		return "telaInicial";
 	}
 
 	@RequestMapping(value = "/consulta", method = RequestMethod.GET)
