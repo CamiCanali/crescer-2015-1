@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import filmator.model.Filme;
 import filmator.model.Genero;
+import filmator.model.Usuario;
 
 @Component
 public class FilmeDao {
@@ -23,7 +24,7 @@ public class FilmeDao {
 		jdbcTemplate.update("INSERT INTO Filme (nome, genero, ano, imagem) VALUES (?,?,?,?)", filme.getNome(), 
 				filme.getGenero().name(),filme.getAno(), filme.getImagem());
 	}
-	
+
 	public List<Filme> buscaTodosFilmesJava8(){
 		return jdbcTemplate.query("SELECT nome, genero, ano, imagem FROM Filme", new RowMapper<Filme>(){	
 			//Filme filme = new Filme(rs.getString("nome"));
@@ -54,5 +55,11 @@ public class FilmeDao {
 			}
 		}, nome);
 	}
+
+	public void avaliarFilme() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
  

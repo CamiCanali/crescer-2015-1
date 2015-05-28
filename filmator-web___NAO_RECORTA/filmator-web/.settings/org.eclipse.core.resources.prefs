@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/templates/telaCadastro.html=UTF-8
+encoding//src/main/resources/templates/telaInicial.html=UTF-8
+encoding//src/main/resources/templates/telaUsuario.html=UTF-8
