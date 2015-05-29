@@ -24,8 +24,8 @@ public class UsuarioDao {
 				usuario.getSenha());
 	}
 	
-	public List<Usuario> login(String nome, int senha){
-		return jdbcTemplate.query("SELECT * FROM Usuario where nome like (?) AND senha like (?)", new RowMapper<Usuario>() {
+	public Usuario login(String nome, int senha){
+		List<Usuario> usuarios =  jdbcTemplate.query("SELECT * FROM Usuario where nome like (?) AND senha like (?)", new RowMapper<Usuario>() {
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Usuario usuario = new Usuario();
 				usuario.setNome(rs.getString("nome"));
@@ -33,6 +33,15 @@ public class UsuarioDao {
 				return usuario;
 			}
 		}, nome, senha);
+		
+		if(usuarios.isEmpty()){
+			return null;
+		}
+		else{
+			return usuarios.get(0);			
+		}
 	}
+	
+	
 	
 }

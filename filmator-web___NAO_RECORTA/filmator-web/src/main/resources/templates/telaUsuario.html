@@ -2,21 +2,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro de usuario</title>
-	<link rel="stylesheet" type="text/css" href="tela.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div style="margin: 0 auto; width: 500px; height: 450px; border: 2px black">
+<form  class="form-horizontal" action="/cadastrarUsuario" method="post">
 
-<form action="/cadastrarUsuario" method="post">
-	<p>
-	<label>Usuário</label>
-	<input name ="nome" type="text">
-	</p>
-	<p>
-	<label>Crie sua senha</label>
-	<input name="senha" type="password">
-	</p>
-	<button type="submit">Crie uma conta</button>
+	<h1 class="form-signin-heading">Filmator</h1>
+	<br><br><br>
 	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Usuário</label>
+		<div class="col-sm-10">
+			<input name ="nome" type="text" class="form-control" placeholder="Crie um usuário" required >
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Senha</label>
+		<div class="col-sm-10">
+			<input name="senha" type="password" class="form-control" placeholder="Crie uma senha" required>
+		</div>
+	</div>
+	<br>
+		<button type="submit" class="btn btn-default">Crie uma conta</button>
 </form>
 </body>
 </html>

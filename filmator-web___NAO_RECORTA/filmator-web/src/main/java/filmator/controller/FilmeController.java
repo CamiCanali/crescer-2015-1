@@ -45,18 +45,21 @@ public class FilmeController {
 	}
 	
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public String inserir(Model model, Filme filme) {
+	public String inserir(Model model, Filme filme, HttpSession session) {
 		filmeDao.inserir(filme);
+		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+		
+		
 		return "telaCadastro";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Usuario usuario, Model model, HttpSession session){
-		Usuario usuarioLogado = usuario;
-		if(usuarioLogado == null){
+		Usuario u = usuarioDao.login(usuario.getNome(), usuario.getSenha());
+		if(u == null){
 			return "login";
 		}
-		session.setAttribute("usuarioLogado", usuario);
+		session.setAttribute("usuarioLogado", u);
 		return  "telaConsulta";
 	}
 	
