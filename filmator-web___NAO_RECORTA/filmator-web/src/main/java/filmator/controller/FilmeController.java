@@ -31,17 +31,17 @@ public class FilmeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		//model.addAttribute("listaGeneros", Genero.values()); 
-		return "telaInicial";
+		return "telaLogin";
 	}
 
-	@RequestMapping(value = "/consulta", method = RequestMethod.GET)
+	@RequestMapping(value = "/consultaFilme", method = RequestMethod.GET)
 	public String consulta(Model model) {		
-		return "telaConsulta";
+		return "consultaFilme";
 	}
 	
-	@RequestMapping(value = "/telaUsuario", method = RequestMethod.GET)
+	@RequestMapping(value = "/usuarioCadastro", method = RequestMethod.GET)
 	public String abrirTelaUsuario(Model model){
-		return "telaUsuario";
+		return "usuarioCadastro";
 	}
 	
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
@@ -50,17 +50,18 @@ public class FilmeController {
 		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 		
 		
-		return "telaCadastro";
+		return "cadastroFilme";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Usuario usuario, Model model, HttpSession session){
 		Usuario u = usuarioDao.login(usuario.getNome(), usuario.getSenha());
-		if(u == null){
-			return "login";
+		if(u != null){
+			session.setAttribute("usuarioLogado", u);
+			return  "redirect:/consultaFilme";
 		}
-		session.setAttribute("usuarioLogado", u);
-		return  "telaConsulta";
+		
+		return "telaLogin";
 	}
 	
 	/*@RequestMapping(value = "/avaliar", method = RequestMethod.POST)
@@ -78,12 +79,12 @@ public class FilmeController {
 	@RequestMapping(value = "/buscarUm", method = RequestMethod.GET)
 	public String buscarUm(String nome, Model model) {
 		model.addAttribute("filme", filmeDao.buscaFilmePeloNome(nome));	
-		return "telaConsulta";
+		return "consultaFilme";
 	}
 	
 	@RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
 	public String cadastrarUsuario(Model model, Usuario usuario){
 		usuarioDao.cadastrarUsuario(usuario);
-		return "telaInicial";
+		return "telaLogin";
 	}
 }
