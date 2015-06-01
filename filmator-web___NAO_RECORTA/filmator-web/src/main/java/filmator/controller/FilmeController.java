@@ -48,9 +48,12 @@ public class FilmeController {
 	public String inserir(Model model, Filme filme, HttpSession session) {
 		filmeDao.inserir(filme);
 		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
-		
-		
-		return "cadastroFilme";
+		Usuario usuarioAdministrador = (Usuario) session.getAttribute("usuarioAdministrador");
+		if(usuarioAdministrador != null && usuarioAdministrador.isAdministrador() == true){
+			model.addAttribute("admin", usuarioAdministrador.isAdministrador());
+			return "cadastroFilme";
+		}else
+			return "telaLogin";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -64,15 +67,16 @@ public class FilmeController {
 		return "telaLogin";
 	}
 	
-	/*@RequestMapping(value = "/avaliar", method = RequestMethod.POST)
-	 public String avaliarFilme(int idFilme, int nota){
-		FilmeDao.avaliarFilme();
+	@RequestMapping(value = "/avaliar", method = RequestMethod.POST)
+	 public String avaliarFilme(int idFilme, int avaliacao){
+		filmeDao.avaliarFilme(idFilme, avaliacao);
 		return "telaConsulta";
-	}*/
+	}
 	
 	@ResponseBody //@ResponseBody faz transformar o retorno para JSON!
 	@RequestMapping(value = "/buscarTodos", method = RequestMethod.GET)
 	public List<Filme> buscarTodos(Model model) {
+		model.addAttribute("filmes", filmeDao.buscaTodosFilmesJava8());
 		return filmeDao.buscaTodosFilmesJava8();
 	}
 	

@@ -3,12 +3,12 @@ package filmator.model;
 public class Usuario {
 	private String nome;
 	private int senha;
-	private boolean adiministrador;
+	private boolean administrador;
 	
 	public Usuario(String nome, int senha, boolean administrador){
 		this.nome = nome;
 		this.senha = senha;
-		this.adiministrador = administrador;
+		this.administrador = administrador;
 	}
 	
 	public Usuario(){}
@@ -30,9 +30,9 @@ public class Usuario {
 	}
 	
 	public boolean isAdministrador(){
-		return adiministrador;
+		return administrador;
 	}
-	public void setAdiministrador(){
-		this.adiministrador = true;
+	public void setAdministrador(){
+		this.administrador = true;
 	}
 }

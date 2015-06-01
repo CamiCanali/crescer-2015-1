@@ -1,12 +1,14 @@
 <!doctype html>
 <head>
 	<meta charset="UTF-8">
-
+	<title>Filmator</title>
+	<script src="/js/jquery.js"></script>
 	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
 </head>
 <body>
 	<div class="form-signin" style="margin: 0 auto; width: 500px; height: 450px;">
 		<h1>Lista de filmes:</h1>
+
     	<form class="form-horizontal" action = "/buscarUm" method = "get">
 						<div class="form-group">
 						  <label class="control-label" for="inputDefault">Digite o nome do filme</label>
@@ -15,13 +17,37 @@
       					<button class="btn btn-primary" type="button">Procurar</button>
     					</span>
 						</div>
-
-
-
             {{#filme}}
             	{{nome}}
+							{{genero}}
+							{{ano}}
+							<img src="{{imagem}}" width="200" height="300">
+							{{sinopse}}
+							{{avaliacao}}
             {{/filme}}
     	</form>
+			<form action="/buscarTodos" method="get">
+				<div class="form-group">
+					{{#filmes}}
+						{{nome}}
+						{{genero}}
+						{{ano}}
+						<img src="{{imagem}}" width="200" height="300">
+						{{sinopse}}
+						{{avaliacao}}
+					{{/filmes}}
+				</div>
+			</form>
+
+			{{#admin}}
+			<form action="/inserir" method="post">
+				<input type="submit" value="Cadastrar Filmes"  class="btn btn-success"></input>
+			</form>
+			{{/admin}}
+
+			<form action="/avaliar" method="post">
+				<input type="submit" value="Cadastrar Filmes"  class="btn btn-success"></input>
+			</form>
     </div>
 </body>
 </html>

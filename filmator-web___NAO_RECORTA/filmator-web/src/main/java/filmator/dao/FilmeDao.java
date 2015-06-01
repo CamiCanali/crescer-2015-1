@@ -21,12 +21,12 @@ public class FilmeDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public void inserir(Filme filme){
-		jdbcTemplate.update("INSERT INTO Filme (nome, genero, ano, imagem) VALUES (?,?,?,?)", filme.getNome(), 
-				filme.getGenero().name(),filme.getAno(), filme.getImagem());
+		jdbcTemplate.update("INSERT INTO Filme (nome, genero, ano, imagem, sinopse, avaliacao) VALUES (?,?,?,?,?,?)", filme.getNome(), 
+				filme.getGenero().name(),filme.getAno(), filme.getImagem(), filme.getSinopse(), filme.getAvaliacao());
 	}
 
 	public List<Filme> buscaTodosFilmesJava8(){
-		return jdbcTemplate.query("SELECT nome, genero, ano, imagem FROM Filme", new RowMapper<Filme>(){	
+		return jdbcTemplate.query("SELECT nome, genero, ano, imagem, sinopse, avaliacao FROM Filme", new RowMapper<Filme>(){	
 			//Filme filme = new Filme(rs.getString("nome"));
 			//return filme;
 			
@@ -37,7 +37,9 @@ public class FilmeDao {
 					filme.setNome(rs.getString("nome"));
 					filme.setGenero(genero);
 					filme.setAno(rs.getInt("ano"));
-					filme.setImagem(rs.getString("imagem"));			
+					filme.setImagem(rs.getString("imagem"));
+					filme.setSinopse(rs.getString("sinopse"));
+					filme.setAvaliacao(rs.getInt("avaliacao"));			
 					return filme;
 				}			
 		});	
@@ -51,14 +53,15 @@ public class FilmeDao {
 				filme.setGenero(Genero.valueOf(rs.getString("genero")));
 				filme.setAno(rs.getInt("ano"));
 				filme.setImagem(rs.getString("imagem"));
+				filme.setSinopse(rs.getString("sinopse"));
+				filme.setAvaliacao(rs.getInt("avaliacao"));	
 				return filme;
 			}
 		}, nome);
 	}
 
-	public void avaliarFilme() {
-		// TODO Auto-generated method stub
-		
+	public void avaliarFilme(int idFilme, int avaliacao) {
+		jdbcTemplate.update("UDATE Filme SET avaliacao = (?) where id like (?)", avaliacao);	
 	}
 
 }
