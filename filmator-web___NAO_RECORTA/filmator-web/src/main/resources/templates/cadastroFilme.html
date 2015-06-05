@@ -2,24 +2,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro de filmes</title>
-
-	<script src="/js/jquery.js"></script>
 	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+	<link rel="stylesheet" href="tela.css">
 </head>
 <body>
 
-	<div class="form-signin">
+	<div class="form-signin"style="margin: 0 auto; width: 500px; height: 450px;">
 
 				<h1>Cadastro de filme</h1>
 
 		<form action="/inserir" method="post">
 			<p>
 				<label>Nome:</label>
-				<input name = "nome" required="required">
+				<input  class="form-control" name = "nome" required="required">
 			</p>
 			<p>
 			<label for="genero">Gênero:</label>
-			<select name="genero" required="required">
+			<select class="form-control" name="genero" required="required">
    				{{#listaGeneros}}
    				<option value="{{name}}">{{descricao}}</option>
    				{{/listaGeneros}}
@@ -27,17 +26,24 @@
  			</p>
  			<p>
 				<label>Ano:</label>
-				<input name = "ano" required="required">
+				<input class="form-control" name = "ano" required="required">
 			</p>
 			<p>
 				<label for="imagem">Imagem:</label>
-				<input type="url" name="imagem" accept="url" required="required"/>
+				<input class="form-control" type="url" name="imagem" accept="url" required="required">
 			</p>
 			<p>
-			<button class="btn btn-primary btn-lg">Salvar</button>
+				<label for="sinopse">Sinopse:</label>
+				<input class="form-control" name="sinopse" required="required">
 			</p>
-
+			<p>
+			<button class="btn btn-primary btn">Salvar</button>
+			</p>
 		</form>
+		<a href="consultaFilme" value="Consultar Filmes"  class="btn btn-success">Consultar Filmes</a>
+		</div>
+		<div class="form-group">
+			<a class="btn btn-danger logout" href="logout">Sair</a>
 		</div>
 </body>
 </html>

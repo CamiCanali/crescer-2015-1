@@ -9,10 +9,6 @@ public class Filme {
 	private String sinopse;
 	private int avaliacao;
 	
-	public Filme(String nome){
-		this.nome = nome;
-	}
-	
 	public Filme(){}
 	
 	public String getNome() {

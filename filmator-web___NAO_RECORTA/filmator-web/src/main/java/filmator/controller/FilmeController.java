@@ -30,12 +30,17 @@ public class FilmeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		//model.addAttribute("listaGeneros", Genero.values()); 
+		
 		return "telaLogin";
 	}
 
 	@RequestMapping(value = "/consultaFilme", method = RequestMethod.GET)
-	public String consulta(Model model) {		
+	public String consulta(Model model, HttpSession session) {
+		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+		String usuarioAdministrador = (String) session.getAttribute("usuarioAdministrador");
+		if(usuarioAdministrador != null){
+			model.addAttribute("admin", true);
+		}
 		return "consultaFilme";
 	}
 	
@@ -44,23 +49,26 @@ public class FilmeController {
 		return "usuarioCadastro";
 	}
 	
+	@RequestMapping(value = "/cadastroFilme", method = RequestMethod.GET)
+	public String abrirTelaCadastroFilme(Model model){
+		model.addAttribute("listaGeneros", Genero.values());
+		return "cadastroFilme";
+	}
+	
+	
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public String inserir(Model model, Filme filme, HttpSession session) {
 		filmeDao.inserir(filme);
-		Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
-		Usuario usuarioAdministrador = (Usuario) session.getAttribute("usuarioAdministrador");
-		if(usuarioAdministrador != null && usuarioAdministrador.isAdministrador() == true){
-			model.addAttribute("admin", usuarioAdministrador.isAdministrador());
-			return "cadastroFilme";
-		}else
-			return "telaLogin";
+		//Usuario usuarioAdministrador = (Usuario) session.getAttribute("usuarioAdministrador");
+		return "redirect:/cadastroFilme";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(Usuario usuario, Model model, HttpSession session){
 		Usuario u = usuarioDao.login(usuario.getNome(), usuario.getSenha());
 		if(u != null){
 			session.setAttribute("usuarioLogado", u);
+			session.setAttribute("usuarioAdministrador", u.getAdministrador());
 			return  "redirect:/consultaFilme";
 		}
 		
@@ -68,9 +76,10 @@ public class FilmeController {
 	}
 	
 	@RequestMapping(value = "/avaliar", method = RequestMethod.POST)
-	 public String avaliarFilme(int idFilme, int avaliacao){
+	 public void avaliarFilme(Model model, int idFilme, int avaliacao, HttpSession session){
+		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 		filmeDao.avaliarFilme(idFilme, avaliacao);
-		return "telaConsulta";
+		//model.addAttribute("media", filmeDao.mediaPorFilme(idFilme));	
 	}
 	
 	@ResponseBody //@ResponseBody faz transformar o retorno para JSON!
@@ -90,5 +99,11 @@ public class FilmeController {
 	public String cadastrarUsuario(Model model, Usuario usuario){
 		usuarioDao.cadastrarUsuario(usuario);
 		return "telaLogin";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+	  session.invalidate();
+	  return "telaLogin";
 	}
 }

@@ -2,8 +2,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Filmator</title>
-	<script src="/js/jquery.js"></script>
+	<script src="/jquery-2.1.4.min.js"></script>
+	<script src="/jsonBuscaTodos.js"></script>
 	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+	<link rel="stylesheet" href="tela.css">
+	<link rel="stylesheet" href="estrelar.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="raterater.jquery.js"></script>
+
 </head>
 <body>
 	<div class="form-signin" style="margin: 0 auto; width: 500px; height: 450px;">
@@ -13,41 +19,59 @@
 						<div class="form-group">
 						  <label class="control-label" for="inputDefault">Digite o nome do filme</label>
 						  <input type="text" name="nome" class="form-control" id="inputDefault" required="required">
-							<span class="input-group-btn">
-      					<button class="btn btn-primary" type="button">Procurar</button>
-    					</span>
+
 						</div>
-            {{#filme}}
-            	{{nome}}
-							{{genero}}
-							{{ano}}
-							<img src="{{imagem}}" width="200" height="300">
-							{{sinopse}}
-							{{avaliacao}}
-            {{/filme}}
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">Procurar</button>
+						</div>
     	</form>
-			<form action="/buscarTodos" method="get">
+			<div class="form-horizontal">
 				<div class="form-group">
-					{{#filmes}}
-						{{nome}}
-						{{genero}}
-						{{ano}}
-						<img src="{{imagem}}" width="200" height="300">
-						{{sinopse}}
-						{{avaliacao}}
-					{{/filmes}}
+					{{#admin}}
+						<a href="cadastroFilme" value="Cadastrar Filmes"  class="btn btn-success">Cadastrar Filmes</a>
+					{{/admin}}
 				</div>
-			</form>
+			</div>
 
-			{{#admin}}
-			<form action="/inserir" method="post">
-				<input type="submit" value="Cadastrar Filmes"  class="btn btn-success"></input>
-			</form>
-			{{/admin}}
+			<div class="well" id="filme">
+				{{#filme}}
+				<div class="row">
+	  			<div class="col-xs-6">
+						<img src="{{imagem}}" width="200px" height="300px"/>
+					</div>
+	  			<div class="col-xs-6">
+						<div class="row">
+							<h2>{{nome}}</h2>
+						</div>
+						<div class="row">
+							{{ano}}
+							{{genero}}
+						</div>
+						<br>
+						<div class="row">
+							{{sinopse}}
+						</div>
+					{{/filme}}
+					<form action="/avaliar" method="post">
+					<fieldset class="rating">
+							<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="5 stars"></label>
+							<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="4 stars"></label>
+							<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="3 stars"></label>
+							<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="2 stars"></label>
+							<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="1 star"></label>
+					</fieldset>
+				</form>
+				</div>
+				</div>
+			</div>
+			<div class="well" id="well" style="margin: 0 auto; width: 500px;">
 
-			<form action="/avaliar" method="post">
-				<input type="submit" value="Cadastrar Filmes"  class="btn btn-success"></input>
-			</form>
+			</div>
     </div>
+		<div class="form-group">
+			<a class="btn btn-danger logout" href="logout">Sair</a>
+		</div>
+
+	</div>
 </body>
 </html>

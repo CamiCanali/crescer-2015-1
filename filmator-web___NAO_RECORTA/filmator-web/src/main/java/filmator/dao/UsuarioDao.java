@@ -24,12 +24,13 @@ public class UsuarioDao {
 				usuario.getSenha());
 	}
 	
-	public Usuario login(String nome, int senha){
+	public Usuario login(String nome, String senha){
 		List<Usuario> usuarios =  jdbcTemplate.query("SELECT * FROM Usuario where nome like (?) AND senha like (?)", new RowMapper<Usuario>() {
 			public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Usuario usuario = new Usuario();
 				usuario.setNome(rs.getString("nome"));
-				usuario.setSenha(rs.getInt("senha"));
+				usuario.setSenha(rs.getString("senha"));
+				usuario.setAdministrador(rs.getString("administrador"));
 				return usuario;
 			}
 		}, nome, senha);
