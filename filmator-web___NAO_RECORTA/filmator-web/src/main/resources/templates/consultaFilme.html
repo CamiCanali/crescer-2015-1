@@ -33,37 +33,40 @@
 				</div>
 			</div>
 
-			<div class="well" id="filme">
+
 				{{#filme}}
-				<div class="row">
-	  			<div class="col-xs-6">
-						<img src="{{imagem}}" width="200px" height="300px"/>
+				<div class="well" id="filme">
+					<div class="row">
+		  			<div class="col-xs-6">
+							<img src="{{imagem}}" width="200px" height="300px"/>
+						</div>
+		  			<div class="col-xs-6">
+							<div class="row">
+								<h2>{{nome}}</h2>
+							</div>
+							<div class="row">
+								{{ano}}
+								{{genero}}
+							</div>
+							<br>
+							<div class="row">
+								{{sinopse}}
+							</div>
 					</div>
-	  			<div class="col-xs-6">
-						<div class="row">
-							<h2>{{nome}}</h2>
-						</div>
-						<div class="row">
-							{{ano}}
-							{{genero}}
-						</div>
-						<br>
-						<div class="row">
-							{{sinopse}}
-						</div>
-					{{/filme}}
 					<form action="/avaliar" method="post">
-					<fieldset class="rating">
-							<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="5 stars"></label>
-							<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="4 stars"></label>
-							<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="3 stars"></label>
-							<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="2 stars"></label>
-							<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="1 star"></label>
-					</fieldset>
-				</form>
-				</div>
+						<fieldset class="rating">
+							<input type="hidden" name="idFilme" value="{{idFilme}}"/>
+								<input type="submit" id="star5" name="avaliacao" value="5" /><label class = "full" for="star5" title="5 stars"></label>
+								<input type="submit" id="star4" name="avaliacao"  value="4" /><label class = "full" for="star4" title="4 stars"></label>
+								<input type="submit" id="star3" name="avaliacao"  value="3" /><label class = "full" for="star3" title="3 stars"></label>
+								<input type="submit" id="star2" name="avaliacao" value="2" /><label class = "full" for="star2" title="2 stars"></label>
+								<input type="submit" id="star1" name="avaliacao" value="1" /><label class = "full" for="star1" title="1 star"></label>
+						</fieldset>
+					</form>
 				</div>
 			</div>
+			{{/filme}}
+
 			<div class="well" id="well" style="margin: 0 auto; width: 500px;">
 
 			</div>
