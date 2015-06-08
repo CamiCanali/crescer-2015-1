@@ -61,7 +61,6 @@ public class FilmeDao {
 	}
 
 	public void avaliarFilme(int idDoFilme, double nota) {
-		if()
 		jdbcTemplate.update("INSERT Into Avaliacao SET nota = (?) where idDoFilme = (?)", nota, idDoFilme);	
 	}
 }
